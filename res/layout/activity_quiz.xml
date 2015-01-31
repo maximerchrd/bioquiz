@@ -18,35 +18,30 @@
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.04" >
-			<RadioButton
-                android:id="@+id/radio0"
+        <Button
+                android:id="@+id/answerbutton1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
-            <RadioButton
-                android:id="@+id/radio1"
+                android:background="@color/white"
+                android:text="Button" />
+        <Button
+                android:id="@+id/answerbutton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
-
-            <RadioButton
-                android:id="@+id/radio2"
+                android:background="@color/white"
+                android:text="Button" />
+        <Button
+                android:id="@+id/answerbutton3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
-
-            <RadioButton
-                android:id="@+id/radio3"
+                android:background="@color/white"
+                android:text="Button" />
+        <Button
+                android:id="@+id/answerbutton4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
-        </RadioGroup>
-
+                android:background="@color/white"
+                android:text="Button" />
         <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
