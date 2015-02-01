@@ -41,7 +41,7 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton1.getText()))
 				{
-					score++;
+					score = score + 2;
 					Log.d("score", "Your score"+score);
 					if(qid<5){					
 						currentQ=quesList.get(qid);
@@ -56,6 +56,7 @@ public class QuizActivity extends Activity {
 					}
 				}else{
 					answerButton1.setBackgroundResource(R.drawable.button_red);
+					score--;
 				}
 			}
 		});
@@ -64,7 +65,7 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton2.getText()))
 				{
-					score++;
+					score = score + 2;
 					Log.d("score", "Your score"+score);
 					if(qid<5){					
 						currentQ=quesList.get(qid);
@@ -79,6 +80,7 @@ public class QuizActivity extends Activity {
 					}
 				}else{
 					answerButton2.setBackgroundResource(R.drawable.button_red);
+					score--;
 				}
 			}
 		});
@@ -87,7 +89,7 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton3.getText()))
 				{
-					score++;
+					score = score + 2;
 					Log.d("score", "Your score"+score);
 					if(qid<5){					
 						currentQ=quesList.get(qid);
@@ -102,6 +104,7 @@ public class QuizActivity extends Activity {
 					}
 				}else{
 					answerButton3.setBackgroundResource(R.drawable.button_red);
+					score--;
 				}
 			}
 		});
@@ -110,7 +113,7 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton4.getText()))
 				{
-					score++;
+					score = score + 2;
 					Log.d("score", "Your score"+score);
 					if(qid<5){					
 						currentQ=quesList.get(qid);
@@ -125,6 +128,7 @@ public class QuizActivity extends Activity {
 					}
 				}else{
 					answerButton4.setBackgroundResource(R.drawable.button_red);
+					score--;
 				}
 			}
 		});
