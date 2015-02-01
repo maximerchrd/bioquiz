@@ -15,7 +15,7 @@ public class QuizActivity extends Activity {
 	int qid=0;
 	Question currentQ;
 	TextView txtQuestion;
-	Button butNext, answerButton1, answerButton2, answerButton3, answerButton4;
+	Button answerButton1, answerButton2, answerButton3, answerButton4;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,7 +28,6 @@ public class QuizActivity extends Activity {
 		answerButton2=(Button)findViewById(R.id.answerbutton2);
 		answerButton3=(Button)findViewById(R.id.answerbutton3);
 		answerButton4=(Button)findViewById(R.id.answerbutton4);
-		butNext=(Button)findViewById(R.id.button1);
 		setQuestionView();
 		
 		answerButton1.setOnClickListener(new View.OnClickListener() {		
@@ -50,7 +49,7 @@ public class QuizActivity extends Activity {
 						finish();
 					}
 				}else{
-					answerButton1.setBackgroundColor(Color.RED);
+					answerButton1.setBackgroundResource(R.drawable.button_red);
 				}
 			}
 		});
@@ -73,7 +72,7 @@ public class QuizActivity extends Activity {
 						finish();
 					}
 				}else{
-					answerButton2.setBackgroundColor(Color.RED);
+					answerButton2.setBackgroundResource(R.drawable.button_red);
 				}
 			}
 		});
@@ -96,7 +95,7 @@ public class QuizActivity extends Activity {
 						finish();
 					}
 				}else{
-					answerButton3.setBackgroundColor(Color.RED);
+					answerButton3.setBackgroundResource(R.drawable.button_red);
 				}
 			}
 		});
@@ -119,7 +118,7 @@ public class QuizActivity extends Activity {
 						finish();
 					}
 				}else{
-					answerButton4.setBackgroundColor(Color.RED);
+					answerButton4.setBackgroundResource(R.drawable.button_red);
 				}
 			}
 		});
@@ -133,14 +132,14 @@ public class QuizActivity extends Activity {
 	private void setQuestionView()
 	{
 		txtQuestion.setText(currentQ.getQUESTION());
+		answerButton1.setBackgroundResource(R.drawable.button_blue);
+		answerButton2.setBackgroundResource(R.drawable.button_blue);
+		answerButton3.setBackgroundResource(R.drawable.button_blue);
+		answerButton4.setBackgroundResource(R.drawable.button_blue);
 		answerButton1.setText(currentQ.getOPTA());
 		answerButton2.setText(currentQ.getOPTB());
 		answerButton3.setText(currentQ.getOPTC());
 		answerButton4.setText(currentQ.getOPTD());
-		answerButton1.setBackgroundColor(Color.WHITE);
-		answerButton2.setBackgroundColor(Color.WHITE);
-		answerButton3.setBackgroundColor(Color.WHITE);
-		answerButton4.setBackgroundColor(Color.WHITE);
 		qid++;
 	}
 }

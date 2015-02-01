@@ -6,4 +6,6 @@
     <string name="str_next">Next</string>
     <string name="title_activity_result">Results!!!</string>
     <color name="white">#FFFFFF</color>
+    <color name="black">#0C090A</color>
+    <color name="grey">#303030</color>
 </resources>

@@ -11,6 +11,8 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int black=0x7f060001;
+        public static final int grey=0x7f060002;
         public static final int white=0x7f060000;
     }
     public static final class dimen {
@@ -24,17 +26,18 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int button_blue=0x7f020000;
+        public static final int button_red=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
         public static final int answerbutton1=0x7f090001;
         public static final int answerbutton2=0x7f090002;
         public static final int answerbutton3=0x7f090003;
         public static final int answerbutton4=0x7f090004;
-        public static final int button1=0x7f090005;
-        public static final int menu_settings=0x7f090008;
-        public static final int ratingBar1=0x7f090006;
-        public static final int textResult=0x7f090007;
+        public static final int menu_settings=0x7f090007;
+        public static final int ratingBar1=0x7f090005;
+        public static final int textResult=0x7f090006;
         public static final int textView1=0x7f090000;
     }
     public static final class layout {
