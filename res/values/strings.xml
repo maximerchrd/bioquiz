@@ -4,7 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="str_next">Next</string>
-    <string name="title_activity_result">Results!!!</string>
+    <string name="title_activity_result">Results</string>
+    <string name="title_activity_quiz">Quiz</string>
     <color name="white">#FFFFFF</color>
     <color name="black">#0C090A</color>
     <color name="grey">#303030</color>
