@@ -1,5 +1,10 @@
 package com.example.bioquiz;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
+
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,6 +27,7 @@ public class QuizActivity extends Activity {
 		setContentView(R.layout.activity_quiz);
 		DbHelper db=new DbHelper(this);
 		quesList=db.getAllQuestions();
+		Collections.shuffle(quesList);
 		currentQ=quesList.get(qid);
 		txtQuestion=(TextView)findViewById(R.id.textView1);
 		answerButton1=(Button)findViewById(R.id.answerbutton1);
@@ -136,10 +142,30 @@ public class QuizActivity extends Activity {
 		answerButton2.setBackgroundResource(R.drawable.button_blue);
 		answerButton3.setBackgroundResource(R.drawable.button_blue);
 		answerButton4.setBackgroundResource(R.drawable.button_blue);
-		answerButton1.setText(currentQ.getOPTA());
-		answerButton2.setText(currentQ.getOPTB());
-		answerButton3.setText(currentQ.getOPTC());
-		answerButton4.setText(currentQ.getOPTD());
+		
+		String[] answerOptions;
+		answerOptions = new String[4];
+		answerOptions[0] = currentQ.getOPTA();
+		answerOptions[1] = currentQ.getOPTB();
+		answerOptions[2] = currentQ.getOPTC();
+		answerOptions[3] = currentQ.getOPTD();
+		
+		//implementing Fisher-Yates shuffle
+		Random rnd = new Random();
+	    for (int i = answerOptions.length - 1; i > 0; i--)
+	    {
+	      int index = rnd.nextInt(i + 1);
+	      // Simple swap
+	      String a = answerOptions[index];
+	      answerOptions[index] = answerOptions[i];
+	      answerOptions[i] = a;
+	    }
+		
+		
+		answerButton1.setText(answerOptions[0]);
+		answerButton2.setText(answerOptions[1]);
+		answerButton3.setText(answerOptions[2]);
+		answerButton4.setText(answerOptions[3]);
 		qid++;
 	}
 }
