@@ -25,17 +25,23 @@ public class QuizActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
-		DbHelper db=new DbHelper(this);
+		DbHelper db = new DbHelper(this);
 		quesList=db.getAllQuestions();
+		Bundle bun = getIntent().getExtras();
+		String subjectQuiz = bun.getString("subject");
+		quesList = db.getQuestionsFromSubject(subjectQuiz);
 		Collections.shuffle(quesList);
-		currentQ=quesList.get(qid);
+		
 		txtQuestion=(TextView)findViewById(R.id.textView1);
-		answerButton1=(Button)findViewById(R.id.answerbutton1);
-		answerButton2=(Button)findViewById(R.id.answerbutton2);
-		answerButton3=(Button)findViewById(R.id.answerbutton3);
-		answerButton4=(Button)findViewById(R.id.answerbutton4);
+		answerButton1 = (Button)findViewById(R.id.answerbutton1);
+		answerButton2 = (Button)findViewById(R.id.answerbutton2);
+		answerButton3 = (Button)findViewById(R.id.answerbutton3);
+		answerButton4 = (Button)findViewById(R.id.answerbutton4);
+		currentQ=quesList.get(qid);
 		setQuestionView();
 		
+		
+		final int nbQuestions = quesList.size();
 		answerButton1.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
@@ -43,7 +49,7 @@ public class QuizActivity extends Activity {
 				{
 					score = score + 2;
 					Log.d("score", "Your score"+score);
-					if(qid<5){					
+					if(qid < nbQuestions){					
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
@@ -67,7 +73,7 @@ public class QuizActivity extends Activity {
 				{
 					score = score + 2;
 					Log.d("score", "Your score"+score);
-					if(qid<5){					
+					if(qid < nbQuestions){					
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
@@ -91,7 +97,7 @@ public class QuizActivity extends Activity {
 				{
 					score = score + 2;
 					Log.d("score", "Your score"+score);
-					if(qid<5){					
+					if(qid < nbQuestions){					
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
@@ -115,7 +121,7 @@ public class QuizActivity extends Activity {
 				{
 					score = score + 2;
 					Log.d("score", "Your score"+score);
-					if(qid<5){					
+					if(qid < nbQuestions){					
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{

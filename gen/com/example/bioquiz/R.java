@@ -31,15 +31,16 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int answerbutton1=0x7f090003;
-        public static final int answerbutton2=0x7f090004;
-        public static final int answerbutton3=0x7f090005;
-        public static final int answerbutton4=0x7f090006;
-        public static final int menu_settings=0x7f090009;
-        public static final int ratingBar1=0x7f090007;
-        public static final int startbutton=0x7f090001;
-        public static final int textResult=0x7f090008;
-        public static final int textView1=0x7f090002;
+        public static final int answerbutton1=0x7f090004;
+        public static final int answerbutton2=0x7f090005;
+        public static final int answerbutton3=0x7f090006;
+        public static final int answerbutton4=0x7f090007;
+        public static final int listView1=0x7f090001;
+        public static final int menu_settings=0x7f09000a;
+        public static final int ratingBar1=0x7f090008;
+        public static final int startbutton=0x7f090002;
+        public static final int textResult=0x7f090009;
+        public static final int textView1=0x7f090003;
         public static final int textViewmenu=0x7f090000;
     }
     public static final class layout {

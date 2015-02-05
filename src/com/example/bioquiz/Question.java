@@ -2,6 +2,8 @@ package com.example.bioquiz;
 
 public class Question {
 	private int ID;
+	private String SUBJECT;
+	private String LEVEL;
 	private String QUESTION;
 	private String OPTA;
 	private String OPTB;
@@ -11,6 +13,8 @@ public class Question {
 	public Question()
 	{
 		ID=0;
+		SUBJECT="";
+		LEVEL="";
 		QUESTION="";
 		OPTA="";
 		OPTB="";
@@ -18,9 +22,11 @@ public class Question {
 		OPTD="";
 		ANSWER="";
 	}
-	public Question(String qUESTION, String oPTA, String oPTB, String oPTC, String oPTD,
+	public Question(String sUBJECT, String lEVEL, String qUESTION, String oPTA, String oPTB, String oPTC, String oPTD,
 			String aNSWER) {
 		
+		SUBJECT = sUBJECT;
+		LEVEL = lEVEL;
 		QUESTION = qUESTION;
 		OPTA = oPTA;
 		OPTB = oPTB;
@@ -31,6 +37,12 @@ public class Question {
 	public int getID()
 	{
 		return ID;
+	}
+	public String getSUBJECT() {
+		return SUBJECT;
+	}
+	public String getLEVEL() {
+		return LEVEL;
 	}
 	public String getQUESTION() {
 		return QUESTION;
@@ -53,6 +65,12 @@ public class Question {
 	public void setID(int id)
 	{
 		ID=id;
+	}
+	public void setSUBJECT(String sUBJECT) {
+		SUBJECT = sUBJECT;
+	}
+	public void setLEVEL(String lEVEL) {
+		LEVEL = lEVEL;
 	}
 	public void setQUESTION(String qUESTION) {
 		QUESTION = qUESTION;
