@@ -1,15 +1,20 @@
 package com.example.bioquiz;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 public class ResultActivity extends Activity {
+	Button backToMenuButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result);
+		backToMenuButton = (Button)findViewById(R.id.button1);
 		//get rating bar object
 		RatingBar bar=(RatingBar)findViewById(R.id.ratingBar1); 
 		bar.setNumStars(5);
@@ -37,6 +42,17 @@ public class ResultActivity extends Activity {
 		case 5:t.setText("Who are you? A trivia wizard???");
 		break;
 		}
+		
+		//listener for "back to menu" button
+		backToMenuButton.setOnClickListener(new View.OnClickListener() {		
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ResultActivity.this, MenuActivity.class);
+				Bundle bun = new Bundle();
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
