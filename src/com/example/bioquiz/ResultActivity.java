@@ -19,9 +19,11 @@ public class ResultActivity extends Activity {
 		//get score
 		Bundle b = getIntent().getExtras();
 		int score= b.getInt("score");
+		int maxscore = b.getInt("maxscore");
 		if (score < 0) score = 0;
 		float percentage = (float)score;
-		percentage = percentage / 10 * 100;
+		float maxscorefloat = (float)maxscore;
+		percentage = percentage / maxscorefloat * 100;
 		//display score
 		bar.setRating(percentage / 100 * 5);
 		switch (score)

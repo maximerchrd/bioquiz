@@ -26,7 +26,6 @@ public class QuizActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
 		DbHelper db = new DbHelper(this);
-		quesList=db.getAllQuestions();
 		Bundle bun = getIntent().getExtras();
 		String subjectQuiz = bun.getString("subject");
 		quesList = db.getQuestionsFromSubject(subjectQuiz);
@@ -56,6 +55,8 @@ public class QuizActivity extends Activity {
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
+						int maxscore = nbQuestions * 2;
+						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
 						finish();
@@ -80,6 +81,8 @@ public class QuizActivity extends Activity {
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
+						int maxscore = nbQuestions * 2;
+						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
 						finish();
@@ -104,6 +107,8 @@ public class QuizActivity extends Activity {
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
+						int maxscore = nbQuestions * 2;
+						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
 						finish();
@@ -128,6 +133,8 @@ public class QuizActivity extends Activity {
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
+						int maxscore = nbQuestions * 2;
+						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
 						finish();
