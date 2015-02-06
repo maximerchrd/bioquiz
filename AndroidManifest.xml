@@ -30,6 +30,10 @@
             android:name="com.example.bioquiz.ResultActivity"
             android:label="@string/title_activity_result" >
         </activity>
+        <activity
+            android:name="com.example.bioquiz.ScoresActivity"
+            android:label="@string/title_activity_scores" >
+        </activity>
     </application>
 
 </manifest>

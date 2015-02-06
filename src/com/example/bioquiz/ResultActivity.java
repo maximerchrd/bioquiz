@@ -48,7 +48,6 @@ public class ResultActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(ResultActivity.this, MenuActivity.class);
-				Bundle bun = new Bundle();
 				startActivity(intent);
 				finish();
 			}

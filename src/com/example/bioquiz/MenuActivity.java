@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MenuActivity extends Activity {
 	Button startButton;
+	Button scoresButton;
 	ListView listSubjects;
 
 	@Override
@@ -23,6 +24,7 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 		startButton = (Button)findViewById(R.id.startbutton);
+		scoresButton = (Button)findViewById(R.id.scoresbutton);
 		listSubjects = (ListView) findViewById(R.id.listView1);
 		DbHelper db = new DbHelper(this);
 
@@ -67,6 +69,16 @@ public class MenuActivity extends Activity {
 				
 			}
 
+		});
+		
+		//go to scores button
+		scoresButton.setOnClickListener(new View.OnClickListener() {		
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MenuActivity.this, ScoresActivity.class);
+				startActivity(intent);
+				finish();
+			}
 		});
 	
 

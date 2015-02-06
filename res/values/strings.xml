@@ -6,6 +6,7 @@
     <string name="str_next">Next</string>
     <string name="title_activity_result">Results</string>
     <string name="title_activity_quiz">Quiz</string>
+    <string name="title_activity_scores">Meilleurs Scores</string>
     <color name="white">#FFFFFF</color>
     <color name="black">#0C090A</color>
     <color name="grey">#303030</color>

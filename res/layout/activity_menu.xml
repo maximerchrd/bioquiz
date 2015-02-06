@@ -36,6 +36,13 @@
            android:layout_marginTop="30dp"
            android:text="Commencer"
            android:textColor="@color/white" />
+
+       <Button
+           android:id="@+id/scoresbutton"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Meilleurs scores"
+           android:textColor="@color/white" />
    </LinearLayout>
 
 </RelativeLayout>
