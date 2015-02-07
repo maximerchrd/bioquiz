@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 public class QuizActivity extends Activity {
 	List<Question> quesList;
@@ -26,6 +27,7 @@ public class QuizActivity extends Activity {
 	Question currentQ;
 	TextView txtQuestion;
 	Button answerButton1, answerButton2, answerButton3, answerButton4;
+	ImageView picture;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class QuizActivity extends Activity {
 		answerButton2 = (Button)findViewById(R.id.answerbutton2);
 		answerButton3 = (Button)findViewById(R.id.answerbutton3);
 		answerButton4 = (Button)findViewById(R.id.answerbutton4);
+		picture = (ImageView)findViewById(R.id.imageView1);
 		currentQ=quesList.get(qid);
 		setQuestionView();
 		
@@ -196,6 +199,9 @@ public class QuizActivity extends Activity {
 		answerButton2.setBackgroundResource(R.drawable.button_blue);
 		answerButton3.setBackgroundResource(R.drawable.button_blue);
 		answerButton4.setBackgroundResource(R.drawable.button_blue);
+			int imageResource = getResources().getIdentifier(currentQ.getIMAGE(), null, getPackageName());
+			picture.setImageResource(imageResource);
+		
 		
 		String[] answerOptions;
 		answerOptions = new String[4];

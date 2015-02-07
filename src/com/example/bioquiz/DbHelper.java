@@ -22,6 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
 	private static final String KEY_OPTB= "optb"; //option b
 	private static final String KEY_OPTC= "optc"; //option c
 	private static final String KEY_OPTD= "optd"; //option d
+	private static final String KEY_IMAGE = "image";
 	
 	// tasks table name
 	private static final String TABLE_SCORES = "scores";
@@ -42,7 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
 				+ KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_SUBJECT + " TEXT, "+ KEY_LEVEL + " TEXT, " +
 				KEY_QUES + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
-				+KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT, "+KEY_OPTD +" TEXT)";
+				+KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT, "+KEY_OPTD +" TEXT, "+KEY_IMAGE+" TEXT)";
 		db.execSQL(sql);		
 		addQuestions();
 		
@@ -89,28 +90,28 @@ public class DbHelper extends SQLiteOpenHelper {
 	
 	private void addQuestions()
 	{
-		Question q0=new Question("sang/système cardiovasculaire/cellule","1","1","1", "2", "3", "4", "2");
+		Question q0=new Question("sang/système cardiovasculaire/cellule","1","1","1", "2", "3", "4", "2","none");
 		this.addQuestion(q0);
 		Question q1=new Question("sang","1","Which company is the largest manufacturer" +
-				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO");
+				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
 		this.addQuestion(q1);
 		Question q2=new Question("sang","1","Which of the following is NOT " +
-				"an operating system?", "SuSe", "BIOS", "DOS", "optionD", "BIOS");
+				"an operating system?", "SuSe", "BIOS", "DOS", "optionD", "BIOS","drawable/compatibilite");
 		this.addQuestion(q2);
 		Question q3=new Question("sang","1","Which of the following is the fastest" +
-				" writable memory?","RAM", "FLASH","Register", "optionD", "Register");
+				" writable memory?","RAM", "FLASH","Register", "optionD", "Register","none");
 		this.addQuestion(q3);
 		Question q4=new Question("sang","1","Which of the following device" +
-				" regulates internet traffic?",	"Router", "Bridge", "Hub", "optionD", "Router");
+				" regulates internet traffic?",	"Router", "Bridge", "Hub", "optionD", "Router","none");
 		this.addQuestion(q4);
 		Question q5=new Question("sang","1","Which of the following is NOT an" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC");
+				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","drawable/compatibilite");
 		this.addQuestion(q5);
 		Question q6=new Question("système cardiovasculaire","1","système cardiovasculaire" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC");
+				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","drawable/compatibilite");
 		this.addQuestion(q6);
 		Question q7=new Question("cellule","1","Cellule" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC");
+				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
 		this.addQuestion(q7);
 	}
 	@Override
@@ -132,6 +133,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		values.put(KEY_OPTB, quest.getOPTB());
 		values.put(KEY_OPTC, quest.getOPTC());
 		values.put(KEY_OPTD, quest.getOPTD());
+		values.put(KEY_IMAGE, quest.getIMAGE());
 		// Inserting Row
 		dbase.insert(TABLE_QUEST, null, values);		
 	}
@@ -154,6 +156,7 @@ public class DbHelper extends SQLiteOpenHelper {
 				quest.setOPTB(cursor.getString(6));
 				quest.setOPTC(cursor.getString(7));
 				quest.setOPTD(cursor.getString(8));
+				quest.setIMAGE(cursor.getString(9));
 				quesList.add(quest);
 			} while (cursor.moveToNext());
 		}
@@ -180,6 +183,7 @@ public class DbHelper extends SQLiteOpenHelper {
 				quest.setOPTB(cursor.getString(6));
 				quest.setOPTC(cursor.getString(7));
 				quest.setOPTD(cursor.getString(8));
+				quest.setIMAGE(cursor.getString(9));
 				quesList.add(quest);
 				}
 			} while (cursor.moveToNext());

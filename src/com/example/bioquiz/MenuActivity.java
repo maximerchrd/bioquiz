@@ -1,6 +1,5 @@
 package com.example.bioquiz;
 
-import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MenuActivity extends Activity {
 	Button startButton;
@@ -80,8 +78,6 @@ public class MenuActivity extends Activity {
 				finish();
 			}
 		});
-	
-
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -10,6 +10,7 @@ public class Question {
 	private String OPTC;
 	private String OPTD;
 	private String ANSWER;
+	private String IMAGE;
 	public Question()
 	{
 		ID=0;
@@ -21,9 +22,10 @@ public class Question {
 		OPTC="";
 		OPTD="";
 		ANSWER="";
+		IMAGE="none";
 	}
 	public Question(String sUBJECT, String lEVEL, String qUESTION, String oPTA, String oPTB, String oPTC, String oPTD,
-			String aNSWER) {
+			String aNSWER, String iMAGE) {
 		
 		SUBJECT = sUBJECT;
 		LEVEL = lEVEL;
@@ -33,6 +35,7 @@ public class Question {
 		OPTC = oPTC;
 		OPTD = oPTD;
 		ANSWER = aNSWER;
+		IMAGE = iMAGE;
 	}
 	public int getID()
 	{
@@ -62,6 +65,9 @@ public class Question {
 	public String getANSWER() {
 		return ANSWER;
 	}
+	public String getIMAGE() {
+		return IMAGE;
+	}
 	public void setID(int id)
 	{
 		ID=id;
@@ -89,6 +95,9 @@ public class Question {
 	}
 	public void setANSWER(String aNSWER) {
 		ANSWER = aNSWER;
+	}
+	public void setIMAGE(String iMAGE) {
+		IMAGE = iMAGE;
 	}
 	
 }
