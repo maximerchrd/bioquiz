@@ -22,6 +22,15 @@ public class DbHelper extends SQLiteOpenHelper {
 	private static final String KEY_OPTB= "optb"; //option b
 	private static final String KEY_OPTC= "optc"; //option c
 	private static final String KEY_OPTD= "optd"; //option d
+	
+	// tasks table name
+	private static final String TABLE_SCORES = "scores";
+	// tasks Table Columns names
+	private static final String KEY_IDscores = "idscores";
+	private static final String KEY_TIME = "time";
+	private static final String KEY_SUBJECTscores = "subjectscores";
+	private static final String KEY_SCORE = "score";
+		
 	private SQLiteDatabase dbase;
 	public DbHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,14 +38,55 @@ public class DbHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		dbase=db;
+		//add table of questions
 		String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
 				+ KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_SUBJECT + " TEXT, "+ KEY_LEVEL + " TEXT, " +
 				KEY_QUES + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
 				+KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT, "+KEY_OPTD +" TEXT)";
 		db.execSQL(sql);		
 		addQuestions();
+		
+		//add table for scores
+		String sql2 = "CREATE TABLE IF NOT EXISTS " + TABLE_SCORES + " ( "
+				+ KEY_IDscores + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TIME + " TEXT, "+ KEY_SUBJECTscores + " TEXT, " +
+				KEY_SCORE + " TEXT)";
+		db.execSQL(sql2);
 		//db.close();
 	}
+	//add new score
+	public void addScore(Score newscore)
+	{
+		//SQLiteDatabase db = this.getWritableDatabase();
+				ContentValues values = new ContentValues();
+				values.put(KEY_TIME, newscore.getTIME());
+				values.put(KEY_SUBJECTscores, newscore.getSUBJECTscores());
+				values.put(KEY_SCORE, newscore.getSCORE());
+				// Inserting Row
+				dbase.insert(TABLE_SCORES, null, values);
+	}
+	public List<Score> getScoresFromSubject(String subjectArg) {
+		List<Score> scoreList = new ArrayList<Score>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + TABLE_SCORES;
+		dbase=this.getReadableDatabase();
+		Cursor cursor = dbase.rawQuery(selectQuery, null);
+		// looping through all rows and adding to list
+		if (cursor.moveToPosition(0)) {
+			do {
+				if (subjectArg.equals(cursor.getString(2))) {   
+				Score score = new Score();
+				score.setIDscores(cursor.getInt(0));
+				score.setTIME(cursor.getString(1));
+				score.setSUBJECTscores(cursor.getString(2));
+				score.setSCORE(cursor.getString(3));
+				scoreList.add(score);
+				}
+			} while (cursor.moveToNext());
+		}
+		// return quest list
+		return scoreList;
+	}
+	
 	private void addQuestions()
 	{
 		Question q0=new Question("sang/système cardiovasculaire/cellule","1","1","1", "2", "3", "4", "2");
@@ -119,7 +169,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToPosition(1)) {
 			do {
-				if (subjectArg.equals(cursor.getString(1))) {   // WTF!? pourquoi cursor.getstring ne donne pas "sang"!?
+				if (subjectArg.equals(cursor.getString(1))) {
 				Question quest = new Question();
 				quest.setID(cursor.getInt(0));
 				quest.setSUBJECT(cursor.getString(1));

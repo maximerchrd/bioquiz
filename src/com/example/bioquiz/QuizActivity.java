@@ -1,14 +1,19 @@
 package com.example.bioquiz;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -25,9 +30,9 @@ public class QuizActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
-		DbHelper db = new DbHelper(this);
+		final DbHelper db = new DbHelper(this);
 		Bundle bun = getIntent().getExtras();
-		String subjectQuiz = bun.getString("subject");
+		final String subjectQuiz = bun.getString("subject");
 		quesList = db.getQuestionsFromSubject(subjectQuiz);
 		Collections.shuffle(quesList);
 		
@@ -42,7 +47,7 @@ public class QuizActivity extends Activity {
 		
 		final int nbQuestions = quesList.size();
 		answerButton1.setOnClickListener(new View.OnClickListener() {		
-			@Override
+			@SuppressLint("SimpleDateFormat") @Override
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton1.getText()))
 				{
@@ -52,10 +57,18 @@ public class QuizActivity extends Activity {
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
+						int maxscore = nbQuestions * 2;
+						// get date and time
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				        String formattedDate = df.format(c.getTime());
+				        String scoreString = Integer.toString(score);;
+				        Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+						db.addScore(scoreTOdb);
+						
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
-						int maxscore = nbQuestions * 2;
 						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
@@ -78,10 +91,18 @@ public class QuizActivity extends Activity {
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
+						int maxscore = nbQuestions * 2;
+						// get date and time
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				        String formattedDate = df.format(c.getTime());
+				        String scoreString = Integer.toString(score);;
+				        Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+						db.addScore(scoreTOdb);
+						
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
-						int maxscore = nbQuestions * 2;
 						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
@@ -104,10 +125,18 @@ public class QuizActivity extends Activity {
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
+						int maxscore = nbQuestions * 2;
+						// get date and time
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				        String formattedDate = df.format(c.getTime());
+				        String scoreString = Integer.toString(score);;
+				        Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+						db.addScore(scoreTOdb);
+						
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
-						int maxscore = nbQuestions * 2;
 						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
@@ -130,10 +159,18 @@ public class QuizActivity extends Activity {
 						currentQ=quesList.get(qid);
 						setQuestionView();
 					}else{
+						int maxscore = nbQuestions * 2;
+						// get date and time
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				        String formattedDate = df.format(c.getTime());
+				        String scoreString = Integer.toString(score);;
+				        Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+						db.addScore(scoreTOdb);
+						
 						Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 						Bundle b = new Bundle();
 						b.putInt("score", score); //Your score
-						int maxscore = nbQuestions * 2;
 						b.putInt("maxscore", maxscore);
 						intent.putExtras(b); //Put your score to your next Intent
 						startActivity(intent);
