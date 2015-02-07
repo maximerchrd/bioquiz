@@ -87,6 +87,26 @@ public class DbHelper extends SQLiteOpenHelper {
 		// return quest list
 		return scoreList;
 	}
+	public List<Score> getScores() {
+		List<Score> scoreList = new ArrayList<Score>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + TABLE_SCORES;
+		dbase=this.getReadableDatabase();
+		Cursor cursor = dbase.rawQuery(selectQuery, null);
+		// looping through all rows and adding to list
+		if (cursor.moveToPosition(0)) {
+			do {   
+				Score score = new Score();
+				score.setIDscores(cursor.getInt(0));
+				score.setTIME(cursor.getString(1));
+				score.setSUBJECTscores(cursor.getString(2));
+				score.setSCORE(cursor.getString(3));
+				scoreList.add(score);
+			} while (cursor.moveToNext());
+		}
+		// return quest list
+		return scoreList;
+	}
 	
 	private void addQuestions()
 	{

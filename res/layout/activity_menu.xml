@@ -43,6 +43,13 @@
            android:layout_height="wrap_content"
            android:text="Meilleurs scores"
            android:textColor="@color/white" />
+
+       <Button
+           android:id="@+id/sendbutton"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Envoyer les résultats"
+           android:textColor="@color/white" />
    </LinearLayout>
 
 </RelativeLayout>
