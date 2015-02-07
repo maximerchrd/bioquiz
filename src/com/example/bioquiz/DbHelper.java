@@ -113,6 +113,12 @@ public class DbHelper extends SQLiteOpenHelper {
 		Question q7=new Question("cellule","1","Cellule" +
 				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
 		this.addQuestion(q7);
+		Question q8=new Question("cellule","2","Cellule niveau 2" +
+				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
+		this.addQuestion(q8);
+		Question q9=new Question("cellule","3","Cellule niveau 3" +
+				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
+		this.addQuestion(q9);
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {
@@ -173,6 +179,34 @@ public class DbHelper extends SQLiteOpenHelper {
 		if (cursor.moveToPosition(1)) {
 			do {
 				if (subjectArg.equals(cursor.getString(1))) {
+				Question quest = new Question();
+				quest.setID(cursor.getInt(0));
+				quest.setSUBJECT(cursor.getString(1));
+				quest.setLEVEL(cursor.getString(2));
+				quest.setQUESTION(cursor.getString(3));
+				quest.setANSWER(cursor.getString(4));
+				quest.setOPTA(cursor.getString(5));
+				quest.setOPTB(cursor.getString(6));
+				quest.setOPTC(cursor.getString(7));
+				quest.setOPTD(cursor.getString(8));
+				quest.setIMAGE(cursor.getString(9));
+				quesList.add(quest);
+				}
+			} while (cursor.moveToNext());
+		}
+		// return quest list
+		return quesList;
+	}
+	public List<Question> getQuestionsFromSubjectAndLevel(String subjectArg, int levelArg) {
+		List<Question> quesList = new ArrayList<Question>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + TABLE_QUEST;
+		dbase=this.getReadableDatabase();
+		Cursor cursor = dbase.rawQuery(selectQuery, null);
+		// looping through all rows and adding to list
+		if (cursor.moveToPosition(1)) {
+			do {
+				if (subjectArg.equals(cursor.getString(1)) && levelArg == Integer.parseInt(cursor.getString(2))) {
 				Question quest = new Question();
 				quest.setID(cursor.getInt(0));
 				quest.setSUBJECT(cursor.getString(1));
