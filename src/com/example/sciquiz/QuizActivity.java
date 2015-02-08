@@ -103,8 +103,17 @@ public class QuizActivity extends Activity {
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					} else {
-						if (level == 1 && score < 2) {
-							int maxscore = nbQuestions * 2;
+						if (level == 1) {
+							score = score + 2;
+							currentQ=quesList1.get(qid);
+						} else if (level == 2) {
+							score = score + 5;
+							currentQ=quesList2.get(qid);
+						} else {
+							score = score + 10;
+							currentQ=quesList3.get(qid);
+						}
+						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -116,11 +125,11 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
-						} else if (level == 1 && score >= 2) {
+						} else if (level == 1 && score >= 13) {
 							qid = 0;
 							currentQ = quesList2.get(qid);
 							level = 2;
@@ -130,8 +139,7 @@ public class QuizActivity extends Activity {
 							toastTV.setTextSize(30);
 							toast.show();
 							setQuestionView();
-						} else if (level == 2 && score < 3) {
-							int maxscore = nbQuestions * 2;
+						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -143,10 +151,10 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
-						} else if (level == 2 && score >= 3) {
+						} else if (level == 2 && score >= 37) {
 							qid = 0;
 							currentQ = quesList3.get(qid);
 							level = 3;
@@ -157,7 +165,6 @@ public class QuizActivity extends Activity {
 							toast.show();
 							setQuestionView();
 						} else {
-							int maxscore = nbQuestions * 2;
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -169,7 +176,7 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
@@ -208,8 +215,17 @@ public class QuizActivity extends Activity {
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					} else {
-						if (level == 1 && score < 2) {
-							int maxscore = nbQuestions * 2;
+						if (level == 1) {
+							score = score + 2;
+							currentQ=quesList1.get(qid);
+						} else if (level == 2) {
+							score = score + 5;
+							currentQ=quesList2.get(qid);
+						} else {
+							score = score + 10;
+							currentQ=quesList3.get(qid);
+						}
+						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -221,11 +237,11 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
-						} else if (level == 1 && score >= 2) {
+						} else if (level == 1 && score >= 13) {
 							qid = 0;
 							currentQ = quesList2.get(qid);
 							level = 2;
@@ -235,8 +251,7 @@ public class QuizActivity extends Activity {
 							toastTV.setTextSize(30);
 							toast.show();
 							setQuestionView();
-						} else if (level == 2 && score < 3) {
-							int maxscore = nbQuestions * 2;
+						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -248,10 +263,10 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
-						} else if (level == 2 && score >= 3) {
+						} else if (level == 2 && score >= 37) {
 							qid = 0;
 							currentQ = quesList3.get(qid);
 							level = 3;
@@ -262,7 +277,6 @@ public class QuizActivity extends Activity {
 							toast.show();
 							setQuestionView();
 						} else {
-							int maxscore = nbQuestions * 2;
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -274,7 +288,7 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
@@ -312,8 +326,17 @@ public class QuizActivity extends Activity {
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					} else {
-						if (level == 1 && score < 2) {
-							int maxscore = nbQuestions * 2;
+						if (level == 1) {
+							score = score + 2;
+							currentQ=quesList1.get(qid);
+						} else if (level == 2) {
+							score = score + 5;
+							currentQ=quesList2.get(qid);
+						} else {
+							score = score + 10;
+							currentQ=quesList3.get(qid);
+						}
+						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -325,11 +348,11 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
-						} else if (level == 1 && score >= 2) {
+						} else if (level == 1 && score >= 13) {
 							qid = 0;
 							currentQ = quesList2.get(qid);
 							level = 2;
@@ -339,8 +362,7 @@ public class QuizActivity extends Activity {
 							toastTV.setTextSize(30);
 							toast.show();
 							setQuestionView();
-						} else if (level == 2 && score < 3) {
-							int maxscore = nbQuestions * 2;
+						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -352,10 +374,10 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
-						} else if (level == 2 && score >= 3) {
+						} else if (level == 2 && score >= 37) {
 							qid = 0;
 							currentQ = quesList3.get(qid);
 							level = 3;
@@ -366,7 +388,6 @@ public class QuizActivity extends Activity {
 							toast.show();
 							setQuestionView();
 						} else {
-							int maxscore = nbQuestions * 2;
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -378,7 +399,7 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
@@ -416,8 +437,17 @@ public class QuizActivity extends Activity {
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					}else{
-						if (level == 1 && score < 2) {
-							int maxscore = nbQuestions * 2;
+						if (level == 1) {
+							score = score + 2;
+							currentQ=quesList1.get(qid);
+						} else if (level == 2) {
+							score = score + 5;
+							currentQ=quesList2.get(qid);
+						} else {
+							score = score + 10;
+							currentQ=quesList3.get(qid);
+						}
+						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -429,11 +459,11 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();
-						} else if (level == 1 && score >= 2) {
+						} else if (level == 1 && score >= 13) {
 							qid = 0;
 							currentQ = quesList2.get(qid);
 							level = 2;
@@ -443,8 +473,7 @@ public class QuizActivity extends Activity {
 							toastTV.setTextSize(30);
 							toast.show();
 							setQuestionView();
-						} else if (level == 2 && score < 3) {
-							int maxscore = nbQuestions * 2;
+						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -456,10 +485,10 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
-						} else if (level == 2 && score >= 3) {
+						} else if (level == 2 && score >= 37) {
 							qid = 0;
 							currentQ = quesList3.get(qid);
 							level = 3;
@@ -470,7 +499,6 @@ public class QuizActivity extends Activity {
 							toast.show();
 							setQuestionView();
 						} else {
-							int maxscore = nbQuestions * 2;
 							// get date and time
 							Calendar c = Calendar.getInstance();
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -482,7 +510,7 @@ public class QuizActivity extends Activity {
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
 							Bundle b = new Bundle();
 							b.putInt("score", score); //Your score
-							b.putInt("maxscore", maxscore);
+							b.putInt("level", level);
 							intent.putExtras(b); //Put your score to your next Intent
 							startActivity(intent);
 							finish();

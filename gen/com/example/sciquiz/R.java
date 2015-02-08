@@ -43,8 +43,8 @@ public final class R {
         public static final int lblListItem=0x7f090010;
         public static final int listView1=0x7f090001;
         public static final int lvExp=0x7f09000e;
-        public static final int menu_level=0x7f090013;
-        public static final int menu_score=0x7f090012;
+        public static final int menu_level=0x7f090012;
+        public static final int menu_score=0x7f090013;
         public static final int menu_settings=0x7f090011;
         public static final int ratingBar1=0x7f09000b;
         public static final int scoresbutton=0x7f090003;

@@ -139,6 +139,18 @@ public class DbHelper extends SQLiteOpenHelper {
 		Question q9=new Question("cellule","3","Cellule niveau 3" +
 				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
 		this.addQuestion(q9);
+		Question q10=new Question("sang","1","Which company is the largest manufacturer" +
+				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		this.addQuestion(q10);
+		Question q11=new Question("sang","1","Which company is the largest manufacturer" +
+				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		this.addQuestion(q11);
+		Question q12=new Question("sang","1","Which company is the largest manufacturer" +
+				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		this.addQuestion(q12);
+		Question q13=new Question("sang","1","Which company is the largest manufacturer" +
+				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		this.addQuestion(q13);
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {

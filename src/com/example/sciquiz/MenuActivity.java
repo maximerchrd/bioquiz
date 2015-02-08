@@ -28,6 +28,7 @@ import android.widget.ListView;
 public class MenuActivity extends Activity {
 	Button startButton, scoresButton, sendButton;
 	ListView listSubjects;
+	Boolean resultsSent = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,7 @@ public class MenuActivity extends Activity {
 						intent.putExtras(bun);
 						startActivity(intent);
 						finish();
+						resultsSent = false;
 					}
 				});
 			}
@@ -91,28 +93,31 @@ public class MenuActivity extends Activity {
 		sendButton.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				try
-			    {
-			        File root = new File(Environment.getExternalStorageDirectory(), "SciQuiz");
-			        if (!root.exists()) {
-			            root.mkdirs();
-			        }
-			        File gpxfile = new File(root, "resultats.txt");
-			        FileWriter writer = new FileWriter(gpxfile);
-			        List<Score> scorelist;
-			        scorelist = db.getScores();
-			        for (int i = 0; i < scorelist.size(); i++) {
-			        	Score scoreToWrite = scorelist.get(i);
-			        	writer.append(scoreToWrite.getSUBJECTscores()+"   "+scoreToWrite.getTIME()+"   "+scoreToWrite.getSCORE()+ "\n");
-			        }
-			        writer.flush();
-			        writer.close();
-			    }
-			    catch(IOException e)
-			    {
-			         e.printStackTrace();
-			    }
-				new SendEmailAsyncTask().execute();
+				if (resultsSent == false) {
+					try
+					{
+						File root = new File(Environment.getExternalStorageDirectory(), "SciQuiz");
+						if (!root.exists()) {
+							root.mkdirs();
+						}
+						File gpxfile = new File(root, "resultats.txt");
+						FileWriter writer = new FileWriter(gpxfile);
+						List<Score> scorelist;
+						scorelist = db.getScores();
+						for (int i = 0; i < scorelist.size(); i++) {
+							Score scoreToWrite = scorelist.get(i);
+							writer.append(scoreToWrite.getSUBJECTscores()+"   "+scoreToWrite.getTIME()+"   "+scoreToWrite.getSCORE()+ "\n");
+						}
+						writer.flush();
+						writer.close();
+						resultsSent = true;
+					}
+					catch(IOException e)
+					{
+						e.printStackTrace();
+					}
+					new SendEmailAsyncTask().execute();
+				}
 			}
 		});
 	}
@@ -141,7 +146,7 @@ public class MenuActivity extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		}
 
 		@Override
