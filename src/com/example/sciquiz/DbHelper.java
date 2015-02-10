@@ -189,6 +189,8 @@ public class DbHelper extends SQLiteOpenHelper {
 		Question q13=new Question("sang","1","Which company is the largest manufacturer" +
 				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
 		this.addQuestion(q13);
+		Question q14=new Question("cellule","1","Update","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		this.addQuestion(q14);
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {
@@ -317,4 +319,5 @@ public class DbHelper extends SQLiteOpenHelper {
 		row=cursor.getCount();
 		return row;
 	}
+	
 }

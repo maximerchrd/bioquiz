@@ -116,7 +116,7 @@ public class QuizActivity extends Activity {
 						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -142,7 +142,7 @@ public class QuizActivity extends Activity {
 						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -167,7 +167,7 @@ public class QuizActivity extends Activity {
 						} else {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -228,7 +228,7 @@ public class QuizActivity extends Activity {
 						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -254,7 +254,7 @@ public class QuizActivity extends Activity {
 						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -279,7 +279,7 @@ public class QuizActivity extends Activity {
 						} else {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -339,7 +339,7 @@ public class QuizActivity extends Activity {
 						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -365,7 +365,7 @@ public class QuizActivity extends Activity {
 						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -390,7 +390,7 @@ public class QuizActivity extends Activity {
 						} else {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -450,7 +450,7 @@ public class QuizActivity extends Activity {
 						if (level == 1 && score < 13) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);;
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -476,7 +476,7 @@ public class QuizActivity extends Activity {
 						} else if (level == 2 && score < 37) {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);;
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
@@ -501,7 +501,7 @@ public class QuizActivity extends Activity {
 						} else {
 							// get date and time
 							Calendar c = Calendar.getInstance();
-							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);;
 							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);

@@ -70,6 +70,7 @@ public class ScoresActivity extends Activity {
         List<Score> scoresSang;
         scoresSang = db.getScoresFromSubject("sang");
         List<String> sang = new ArrayList<String>();
+        sang.add("Date                     Score");
         //sort list according to score
         for (int i = 0; i < scoresSang.size() && i < 5; i++) {
         	Score maxscore = scoresSang.get(i);
@@ -80,7 +81,9 @@ public class ScoresActivity extends Activity {
         			scoresSang.set(i, maxscore);
         		}
         	}
-        	sang.add(scoresSang.get(i).getTIME()+" score: "+scoresSang.get(i).getSCORE());
+        	String time = scoresSang.get(i).getTIME();
+        	String upToNCharacters = time.substring(0, Math.min(time.length(), 10));
+        	sang.add(upToNCharacters+"       "+scoresSang.get(i).getSCORE());
         }
  
      // Adding child data

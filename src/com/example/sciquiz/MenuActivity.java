@@ -13,6 +13,7 @@ import javax.mail.MessagingException;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,9 +25,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.provider.Settings.Secure;
-
+import android.view.ViewGroup;
+import android.view.ViewGroup;
 
 public class MenuActivity extends Activity {
 	Button startButton, scoresButton, sendButton, buttonChangeSettings;
@@ -56,18 +59,37 @@ public class MenuActivity extends Activity {
 		// Forth - the Array of data
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, subjects);
+				android.R.layout.simple_list_item_1, android.R.id.text1, subjects){
+			        @Override
+			        public View getView(int position, View convertView,
+			                ViewGroup parent) {
+			            View view =super.getView(position, convertView, parent);
+
+			            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+			            /*YOUR CHOICE OF COLOR*/
+			            textView.setTextColor(Color.WHITE);
+
+			            return view;
+			        }
+			    };
 		// Assign adapter to ListView
 		listSubjects.setAdapter(adapter); 
-
-
+		listSubjects.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+		
 		// ListView Item Click Listener
 		listSubjects.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				final String subject = (String)parent.getAdapter().getItem(position);
-
+				// Set the item as checked to be highlighted
+				for (int i = 0; i < listSubjects.getCount(); i++) {
+					listSubjects.getChildAt(i).setBackgroundColor(Color.BLACK);
+				}
+				//listSubjects.setItemChecked(0, true);
+				view.setBackgroundColor(Color.BLUE);
+				
 				startButton.setOnClickListener(new View.OnClickListener() {		
 					@Override
 					public void onClick(View v) {
@@ -112,7 +134,7 @@ public class MenuActivity extends Activity {
 						writer.append(username+"   "+android_id+"\n");
 						for (int i = 0; i < scorelist.size(); i++) {
 							Score scoreToWrite = scorelist.get(i);
-							writer.append(scoreToWrite.getSUBJECTscores()+" "+scoreToWrite.getTIME()+" "+scoreToWrite.getSCORE()+ "\n");
+							writer.append(scoreToWrite.getSUBJECTscores()+"; "+scoreToWrite.getTIME()+"; "+scoreToWrite.getSCORE()+ "\n");
 						}
 						writer.flush();
 						writer.close();
