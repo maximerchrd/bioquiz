@@ -35,6 +35,10 @@
             android:name="com.example.sciquiz.ScoresActivity"
             android:label="@string/title_activity_scores" >
         </activity>
+        <activity
+            android:name="com.example.sciquiz.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>

@@ -37,8 +37,6 @@ public class ScoresActivity extends Activity {
 		backToMenuButton.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(ScoresActivity.this, MenuActivity.class);
-				startActivity(intent);
 				finish();
 			}
 		});

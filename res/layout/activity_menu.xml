@@ -26,8 +26,8 @@
        <ListView
            android:id="@+id/listView1"
            android:layout_width="match_parent"
-           android:textColor="@color/white"
-           android:layout_height="182dp" >
+           android:layout_height="182dp"
+           android:textColor="@color/white" >
        </ListView>
 
        <Button
@@ -51,6 +51,13 @@
            android:layout_height="wrap_content"
            android:text="Envoyer les résultats"
            android:textColor="@color/white" />
+
+       <Button
+           android:id="@+id/buttonchangesettings"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textColor="@color/white"
+           android:text="@string/button_menu_settings" />
    </LinearLayout>
 
 </RelativeLayout>

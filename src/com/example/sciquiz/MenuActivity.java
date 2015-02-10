@@ -24,9 +24,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.provider.Settings.Secure;
+
 
 public class MenuActivity extends Activity {
-	Button startButton, scoresButton, sendButton;
+	Button startButton, scoresButton, sendButton, buttonChangeSettings;
 	ListView listSubjects;
 	Boolean resultsSent = false;
 
@@ -37,6 +40,7 @@ public class MenuActivity extends Activity {
 		startButton = (Button)findViewById(R.id.startbutton);
 		scoresButton = (Button)findViewById(R.id.scoresbutton);
 		sendButton = (Button)findViewById(R.id.sendbutton);
+		buttonChangeSettings = (Button)findViewById(R.id.buttonchangesettings);
 		listSubjects = (ListView) findViewById(R.id.listView1);
 		final DbHelper db = new DbHelper(this);
 
@@ -72,7 +76,6 @@ public class MenuActivity extends Activity {
 						bun.putString("subject", subject);
 						intent.putExtras(bun);
 						startActivity(intent);
-						finish();
 						resultsSent = false;
 					}
 				});
@@ -85,15 +88,14 @@ public class MenuActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, ScoresActivity.class);
 				startActivity(intent);
-				finish();
 			}
 		});
 
 		//send email button
-		sendButton.setOnClickListener(new View.OnClickListener() {		
+		sendButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (resultsSent == false) {
+				//if (resultsSent == false) {
 					try
 					{
 						File root = new File(Environment.getExternalStorageDirectory(), "SciQuiz");
@@ -104,13 +106,18 @@ public class MenuActivity extends Activity {
 						FileWriter writer = new FileWriter(gpxfile);
 						List<Score> scorelist;
 						scorelist = db.getScores();
+						String username = db.getName();
+						final String android_id = Secure.getString(getBaseContext().getContentResolver(),
+					            Secure.ANDROID_ID);
+						writer.append(username+"   "+android_id+"\n");
 						for (int i = 0; i < scorelist.size(); i++) {
 							Score scoreToWrite = scorelist.get(i);
-							writer.append(scoreToWrite.getSUBJECTscores()+"   "+scoreToWrite.getTIME()+"   "+scoreToWrite.getSCORE()+ "\n");
+							writer.append(scoreToWrite.getSUBJECTscores()+" "+scoreToWrite.getTIME()+" "+scoreToWrite.getSCORE()+ "\n");
 						}
 						writer.flush();
 						writer.close();
 						resultsSent = true;
+						
 					}
 					catch(IOException e)
 					{
@@ -118,8 +125,18 @@ public class MenuActivity extends Activity {
 					}
 					new SendEmailAsyncTask().execute();
 				}
+			//}
+		});
+
+		//open change settings activity
+		buttonChangeSettings.setOnClickListener(new View.OnClickListener() {		
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MenuActivity.this, SettingsActivity.class);
+				startActivity(intent);
 			}
 		});
+
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,7 +145,8 @@ public class MenuActivity extends Activity {
 		return true;
 	}
 
-
+	final DbHelper db = new DbHelper(this);
+	
 	//class for sending mail
 	class SendEmailAsyncTask extends AsyncTask <Void, Void, Boolean> {
 		Mail m = new Mail("sciquiz.sender@gmail.com", "sciqkiss");
@@ -138,7 +156,10 @@ public class MenuActivity extends Activity {
 			String[] toArr = { "sciquiz.receiver@gmail.com"};
 			m.setTo(toArr);
 			m.setFrom("sciquiz.sender@gmail.com");
-			m.setSubject("Email from Android");
+			String username = db.getName();
+			final String android_id = Secure.getString(getBaseContext().getContentResolver(),
+            Secure.ANDROID_ID);
+			m.setSubject(username+"   "+android_id);
 			m.setBody("body.");
 			try {
 				File results = new File(Environment.getExternalStorageDirectory(), "SciQuiz/resultats.txt");
@@ -146,7 +167,6 @@ public class MenuActivity extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		@Override
