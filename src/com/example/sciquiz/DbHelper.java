@@ -148,49 +148,71 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	private void addQuestions()
 	{
-		Question q0=new Question("sang/système cardiovasculaire/cellule","1","1","1", "2", "3", "4", "2","none");
+		Question q0=new Question("système cardiovasculaire","1","0","0","0","0", "0", "0","none");
 		this.addQuestion(q0);
-		Question q1=new Question("sang","1","Which company is the largest manufacturer" +
-				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		Question q1=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
+				" la partie gauche du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","none");
 		this.addQuestion(q1);
-		Question q2=new Question("sang","1","Which of the following is NOT " +
-				"an operating system?", "SuSe", "BIOS", "DOS", "optionD", "BIOS","drawable/compatibilite");
+		Question q2=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
+				" l'artère pulmonaire?","protoxyde d'azote","oxygène","vapeur d'eau", "gaz carbonique", "gaz carbonique","none");
 		this.addQuestion(q2);
-		Question q3=new Question("sang","1","Which of the following is the fastest" +
-				" writable memory?","RAM", "FLASH","Register", "optionD", "Register","none");
+		Question q3=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
+				" les veines pulmonaires?","azote","oxygène","argon", "gaz carbonique", "oxygène","none");
 		this.addQuestion(q3);
-		Question q4=new Question("sang","1","Which of the following device" +
-				" regulates internet traffic?",	"Router", "Bridge", "Hub", "optionD", "Router","none");
+		Question q4=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
+				" l'aorte?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","none");
 		this.addQuestion(q4);
-		Question q5=new Question("sang","1","Which of the following is NOT an" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","drawable/compatibilite");
+		Question q5=new Question("système cardiovasculaire","2","Que se passe-t-il dans les poumons?",
+				"Le gaz carbonique du sang est échangé contre de l'oxygène","L'oxygène du sang est échangé contre du gaz carbonique","La respiration cellulaire 'donne' de l'oxygène au sang et 'prend' du gaz carbonique", "La respiration cellulaire 'donne' du gaz carbonique au sang et 'prend' de l'oxygène", "Le gaz carbonique du sang est échangé contre de l'oxygène","none");
 		this.addQuestion(q5);
-		Question q6=new Question("système cardiovasculaire","1","système cardiovasculaire" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","drawable/compatibilite");
+		Question q6=new Question("système cardiovasculaire","2","Que se passe-t-il dans les muscles?",
+				"Le gaz carbonique du sang est échangé contre de l'oxygène","La photosynthèse 'donne' de l'oxygène au sang et 'prend' du gaz carbonique","La respiration cellulaire 'prend' du gaz carbonique du sang et 'donne' de l'oxygène", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique","none");
 		this.addQuestion(q6);
-		Question q7=new Question("cellule","1","Cellule" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
+		Question q7=new Question("système cardiovasculaire","1","Que représente le numéro 1 sur cette image?","coeur","poumons","muscle", "intestin grêle", "coeur","drawable/circulation1");
 		this.addQuestion(q7);
-		Question q8=new Question("cellule","2","Cellule niveau 2" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
+		Question q8=new Question("système cardiovasculaire","1","Que représente le numéro 2 sur cette image?","coeur","poumons","muscle", "intestin grêle", "poumons","drawable/circulation1");
 		this.addQuestion(q8);
-		Question q9=new Question("cellule","3","Cellule niveau 3" +
-				" interpreted language?","Ruby","Python","BASIC", "optionD", "BASIC","none");
+		Question q9=new Question("système cardiovasculaire","1","Que représente le numéro 3 sur cette image?","cerveau","poumons","muscle", "intestin grêle", "cerveau","drawable/circulation1");
 		this.addQuestion(q9);
-		Question q10=new Question("sang","1","Which company is the largest manufacturer" +
-				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		Question q10=new Question("système cardiovasculaire","1","Quel numéro n'est pas alimenté par la grande circulation?","1","2","3","4", "2","drawable/circulation1");
 		this.addQuestion(q10);
-		Question q11=new Question("sang","1","Which company is the largest manufacturer" +
-				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		Question q11=new Question("système cardiovasculaire","1","Quel gaz contient le sang qui circule dans" +
+				" la partie droite du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "gaz carbonique","none");
 		this.addQuestion(q11);
-		Question q12=new Question("sang","1","Which company is the largest manufacturer" +
-				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		Question q12=new Question("système cardiovasculaire","1","Quel élément de la respiration cellulaire est symbolisé par la lettre A","oxygène","gaz carbonique","lumière","eau", "oxygène","drawable/respiration_cellulaire");
 		this.addQuestion(q12);
-		Question q13=new Question("sang","1","Which company is the largest manufacturer" +
-				" of network equipment?","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		Question q13=new Question("système cardiovasculaire","1","Quel élément de la respiration cellulaire est symbolisé par la lettre B","oxygène","gaz carbonique","lumière","eau", "gaz carbonique","drawable/respiration_cellulaire");
 		this.addQuestion(q13);
-		Question q14=new Question("cellule","1","Update","HP", "IBM", "CISCO", "optionD", "CISCO","drawable/compatibilite");
+		Question q14=new Question("système cardiovasculaire","1","Que représente le numéro 1 sur cette image du coeur?","oreillette droite","oreillette gauche","ventricule droit","ventricule gauche", "oreillette droite","drawable/schema_coeur");
 		this.addQuestion(q14);
+		Question q15=new Question("système cardiovasculaire","1","Que représente le numéro 2 sur cette image du coeur?","oreillette droite","oreillette gauche","ventricule droit","ventricule gauche", "ventricule droit","drawable/schema_coeur");
+		this.addQuestion(q15);
+		Question q16=new Question("système cardiovasculaire","1","Que représente le numéro 3 sur cette image du coeur?","oreillette droite","oreillette gauche","ventricule droit","ventricule gauche", "oreillette gauche","drawable/schema_coeur");
+		this.addQuestion(q16);
+		Question q17=new Question("système cardiovasculaire","1","Que représente le numéro 4 sur cette image du coeur?","oreillette droite","oreillette gauche","ventricule droit","ventricule gauche", "ventricule gauche","drawable/schema_coeur");
+		this.addQuestion(q17);
+		Question q18=new Question("système cardiovasculaire","1","Que désigne le numéro 1 sur cette image?","veine","capillaires","artère","valvule", "veine","drawable/capillaires");
+		this.addQuestion(q18);
+		Question q19=new Question("système cardiovasculaire","1","Que désigne le numéro 2 sur cette image?","veine","capillaires","artère","valvule", "capillaires","drawable/capillaires");
+		this.addQuestion(q19);
+		Question q20=new Question("système cardiovasculaire","1","Que désigne le numéro 3 sur cette image?","veine","capillaires","artère","valvule", "artère","drawable/capillaires");
+		this.addQuestion(q20);
+		Question q21=new Question("système cardiovasculaire","1","Les artères ...","... partent du coeur","... arrivent au coeur","... contiennent du sang oxygéné","... contiennent du sang avec du gaz carbonique", "... partent du coeur","none");
+		this.addQuestion(q21);
+		Question q22=new Question("système cardiovasculaire","2","Laquelle de ces affirmations est exacte?","Les veines partent du coeur","Les artères contiennent des valvules","La paroi des veines est plus mince que celle des artères","Les capillaires ne se trouvent que dans les poumons", "La paroi des veines est plus mince que celle des artères","none");
+		this.addQuestion(q22);
+		Question q23=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre B","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la systole ventriculaire","ecg");
+		this.addQuestion(q23);
+		Question q24=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre A","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la systole auriculaire","ecg");
+		this.addQuestion(q24);
+		Question q25=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		this.addQuestion(q25);
+		Question q26=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		this.addQuestion(q26);
+		Question q27=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		this.addQuestion(q27);
+		Question q28=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		this.addQuestion(q28);
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {

@@ -90,6 +90,7 @@ public class ScoresActivity extends Activity {
         List<Score> scoresSysCar;
         scoresSysCar = db.getScoresFromSubject("système cardiovasculaire");
         List<String> sysCar = new ArrayList<String>();
+        sysCar.add("Date                     Score");
         //sort list according to score
         for (int i = 0; i < scoresSysCar.size() && i < 5; i++) {
         	Score maxscore = scoresSysCar.get(i);
@@ -107,6 +108,7 @@ public class ScoresActivity extends Activity {
         List<Score> scoresCellule;
         scoresCellule = db.getScoresFromSubject("cellule");
         List<String> cellule = new ArrayList<String>();
+        cellule.add("Date                     Score");
         //sort list according to score
         for (int i = 0; i < scoresCellule.size() && i < 5; i++) {
         	Score maxscore = scoresCellule.get(i);

@@ -28,9 +28,14 @@ public final class R {
     public static final class drawable {
         public static final int button_blue=0x7f020000;
         public static final int button_red=0x7f020001;
-        public static final int compatibilite=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int ic_launcher_old=0x7f020004;
+        public static final int capillaires=0x7f020002;
+        public static final int circulation1=0x7f020003;
+        public static final int compatibilite=0x7f020004;
+        public static final int ecg=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int ic_launcher_old=0x7f020007;
+        public static final int respiration_cellulaire=0x7f020008;
+        public static final int schema_coeur=0x7f020009;
     }
     public static final class id {
         public static final int answerbutton1=0x7f090008;
@@ -41,7 +46,6 @@ public final class R {
         public static final int buttonchangesettings=0x7f090005;
         public static final int buttonsaveandback=0x7f090012;
         public static final int edittextnom=0x7f090011;
-        public static final int imageView1=0x7f090007;
         public static final int lblListHeader=0x7f090013;
         public static final int lblListItem=0x7f090014;
         public static final int listView1=0x7f090001;
@@ -49,6 +53,7 @@ public final class R {
         public static final int menu_level=0x7f090016;
         public static final int menu_score=0x7f090017;
         public static final int menu_settings=0x7f090015;
+        public static final int picture=0x7f090007;
         public static final int ratingBar1=0x7f09000c;
         public static final int scoresbutton=0x7f090003;
         public static final int sendbutton=0x7f090004;

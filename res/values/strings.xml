@@ -14,6 +14,6 @@
     <string name="button_settings_back">Sauver et revenir</string>
     <string name="button_menu_settings">Données persos</string>
     <color name="white">#FFFFFF</color>
-    <color name="black">#0C090A</color>
+    <color name="black">#000000</color>
     <color name="grey">#303030</color>
 </resources>

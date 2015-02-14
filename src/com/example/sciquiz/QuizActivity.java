@@ -31,11 +31,15 @@ public class QuizActivity extends Activity {
 	int score=0;
 	int qid=0;
 	int level=1;
+	int nbQuestionsLevel1 = 8;
+	int nbQuestionsLevel2 = 6;
+	int nbQuestionsLevel3 = 5;
 	Question currentQ;
 	TextView txtQuestion;
 	Button answerButton1, answerButton2, answerButton3, answerButton4;
 	ImageView picture;
-	
+	boolean isImageFitToScreen;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,32 +60,24 @@ public class QuizActivity extends Activity {
 		answerButton2 = (Button)findViewById(R.id.answerbutton2);
 		answerButton3 = (Button)findViewById(R.id.answerbutton3);
 		answerButton4 = (Button)findViewById(R.id.answerbutton4);
-		picture = (ImageView)findViewById(R.id.imageView1);
+		picture = (ImageView)findViewById(R.id.picture);
 
+		picture.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(isImageFitToScreen) {
+					isImageFitToScreen=false;
+					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
+					//picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+					picture.setAdjustViewBounds(true);
+				}else{
+					isImageFitToScreen=true;
+					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+				}
+			}
+		});
 
-		final int nbQuestions;
-		if (level == 1){
-			currentQ=quesList1.get(qid);
-			if (quesList1.size() > 8) {
-				nbQuestions = 8;
-			} else {
-				nbQuestions = quesList1.size();
-			}
-		} else if (level == 2) {
-			currentQ=quesList2.get(qid);
-			if (quesList2.size() > 6) {
-				nbQuestions = 6;
-			} else {
-				nbQuestions = quesList2.size();
-			}
-		} else {
-			currentQ=quesList3.get(qid);
-			if (quesList3.size() > 5) {
-				nbQuestions = 5;
-			} else {
-				nbQuestions = quesList3.size();
-			}
-		}
+		currentQ=quesList1.get(qid);
 		setQuestionView();
 
 		answerButton1.setOnClickListener(new View.OnClickListener() {		
@@ -89,17 +85,19 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton1.getText()))
 				{
-					if(qid < nbQuestions){					
-						if (level == 1) {
-							score = score + 2;
-							currentQ=quesList1.get(qid);
-						} else if (level == 2) {
-							score = score + 5;
-							currentQ=quesList2.get(qid);
-						} else {
-							score = score + 10;
-							currentQ=quesList3.get(qid);
-						}
+					if(level == 1 && qid < nbQuestionsLevel1){					
+						score = score + 2;
+						currentQ=quesList1.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 2 && qid < nbQuestionsLevel2) {
+						score = score + 5;
+						currentQ=quesList2.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 3 && qid < nbQuestionsLevel3) {
+						score = score + 10;
+						currentQ=quesList3.get(qid);
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					} else {
@@ -201,17 +199,19 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if (currentQ.getANSWER().equals(answerButton2.getText()))
 				{
-					if(qid < nbQuestions){					
-						if (level == 1) {
-							score = score + 2;
-							currentQ=quesList1.get(qid);
-						} else if (level == 2) {
-							score = score + 5;
-							currentQ=quesList2.get(qid);
-						} else {
-							score = score + 10;
-							currentQ=quesList3.get(qid);
-						}
+					if(level == 1 && qid < nbQuestionsLevel1){					
+						score = score + 2;
+						currentQ=quesList1.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 2 && qid < nbQuestionsLevel2) {
+						score = score + 5;
+						currentQ=quesList2.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 3 && qid < nbQuestionsLevel3) {
+						score = score + 10;
+						currentQ=quesList3.get(qid);
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					} else {
@@ -312,17 +312,19 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton3.getText()))
 				{
-					if(qid < nbQuestions){					
-						if (level == 1) {
-							score = score + 2;
-							currentQ=quesList1.get(qid);
-						} else if (level == 2) {
-							score = score + 5;
-							currentQ=quesList2.get(qid);
-						} else {
-							score = score + 10;
-							currentQ=quesList3.get(qid);
-						}
+					if(level == 1 && qid < nbQuestionsLevel1){					
+						score = score + 2;
+						currentQ=quesList1.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 2 && qid < nbQuestionsLevel2) {
+						score = score + 5;
+						currentQ=quesList2.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 3 && qid < nbQuestionsLevel3) {
+						score = score + 10;
+						currentQ=quesList3.get(qid);
 						Log.d("score", "Your score"+score);
 						setQuestionView();
 					} else {
@@ -423,20 +425,22 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton4.getText()))
 				{
-					if(qid < nbQuestions){					
-						if (level == 1) {
-							score = score + 2;
-							currentQ=quesList1.get(qid);
-						} else if (level == 2) {
-							score = score + 5;
-							currentQ=quesList2.get(qid);
-						} else {
-							score = score + 10;
-							currentQ=quesList3.get(qid);
-						}
+					if(level == 1 && qid < nbQuestionsLevel1){					
+						score = score + 2;
+						currentQ=quesList1.get(qid);
 						Log.d("score", "Your score"+score);
 						setQuestionView();
-					}else{
+					} else if (level == 2 && qid < nbQuestionsLevel2) {
+						score = score + 5;
+						currentQ=quesList2.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else if (level == 3 && qid < nbQuestionsLevel3) {
+						score = score + 10;
+						currentQ=quesList3.get(qid);
+						Log.d("score", "Your score"+score);
+						setQuestionView();
+					} else{
 						if (level == 1) {
 							score = score + 2;
 							currentQ=quesList1.get(qid);
