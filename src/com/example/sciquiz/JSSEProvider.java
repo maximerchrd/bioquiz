@@ -28,7 +28,12 @@ import java.security.Provider;
 
 public final class JSSEProvider extends Provider {
 
-    public JSSEProvider() {
+    /**
+	 * fixed warning by giving a serial Version UID (http://stackoverflow.com/questions/2288937/what-does-it-mean-the-serializable-class-does-not-declare-a-static-final-serial)
+	 */
+	private static final long serialVersionUID = -3086019372257993982L;
+
+	public JSSEProvider() {
         super("HarmonyJSSE", 1.0, "Harmony JSSE Provider");
         AccessController.doPrivileged(new java.security.PrivilegedAction<Void>() {
             public Void run() {

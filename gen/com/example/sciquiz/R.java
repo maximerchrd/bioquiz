@@ -84,6 +84,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int button_menu_settings=0x7f05000c;
+        public static final int button_result_back=0x7f05000d;
         public static final int button_settings_back=0x7f05000b;
         public static final int hello_world=0x7f050001;
         public static final int menu_level=0x7f050009;

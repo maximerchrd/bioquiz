@@ -11,7 +11,6 @@ import javax.mail.MessagingException;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -26,9 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.provider.Settings.Secure;
-import android.view.ViewGroup;
 import android.view.ViewGroup;
 
 public class MenuActivity extends Activity {
