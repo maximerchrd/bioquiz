@@ -6,6 +6,7 @@ public class Score {
 	private String TIME;
 	private String SUBJECTscores;
 	private String SCORE;
+	private String LEVEL;
 	
 	public Score()
 	{
@@ -14,12 +15,14 @@ public class Score {
 		TIME = "";
 		SUBJECTscores = "";
 		SCORE = "";
+		LEVEL = "";
 	}
-	public Score(/*String dATE,*/ String tIME, String sUBJECTscores, String sCORE) {
+	public Score(/*String dATE,*/ String tIME, String sUBJECTscores, String sCORE, String lEVEL) {
 		//DATE = dATE;
 		TIME = tIME;
 		SUBJECTscores = sUBJECTscores;
 		SCORE = sCORE;
+		LEVEL = lEVEL;
 	}
 	public int getIDscores()
 	{
@@ -37,6 +40,9 @@ public class Score {
 	public String getSCORE() {
 		return SCORE;
 	}
+	public String getLEVEL() {
+		return LEVEL;
+	}
 	public void setIDscores(int iDscores) {
 		IDscores = iDscores;
 	}
@@ -51,5 +57,8 @@ public class Score {
 	}
 	public void setSCORE(String sCORE) {
 		SCORE = sCORE;
+	}
+	public void setLEVEL(String lEVEL) {
+		LEVEL = lEVEL;
 	}
 }

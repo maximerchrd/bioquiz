@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="Retourner au menu" />
+        android:text="Retourner au menu"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

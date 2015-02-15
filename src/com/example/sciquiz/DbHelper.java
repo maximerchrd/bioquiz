@@ -12,7 +12,7 @@ public class DbHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME = "bioQuiz";
 	// tasks table name
 	private static final String TABLE_QUEST = "quest";
-	// tasks Table Columns names
+	// tasks Table Columns names for the question table
 	private static final String KEY_ID = "id";
 	private static final String KEY_SUBJECT = "subject";
 	private static final String KEY_LEVEL = "level";
@@ -23,20 +23,26 @@ public class DbHelper extends SQLiteOpenHelper {
 	private static final String KEY_OPTC= "optc"; //option c
 	private static final String KEY_OPTD= "optd"; //option d
 	private static final String KEY_IMAGE = "image";
+	private static final String KEY_TRIAL1 = "questscore1"; //good answer on first trial
+	private static final String KEY_TRIAL2 = "questscore2";
+	private static final String KEY_TRIAL3 = "questscore3";
+	private static final String KEY_TRIAL4 = "questscore4";
 
 	// tasks table name
 	private static final String TABLE_SCORES = "scores";
-	// tasks Table Columns names
+	// tasks Table Columns names for the score table
 	private static final String KEY_IDscores = "idscores";
 	private static final String KEY_TIME = "time";
 	private static final String KEY_SUBJECTscores = "subjectscores";
 	private static final String KEY_SCORE = "score";
+	private static final String KEY_LEVELscore = "levelscore";
 
 	// tasks table settings
 	private static final String TABLE_SETTINGS = "settings";
-	// tasks Table Columns names
+	// tasks Table Columns names for the settings table
 	private static final String KEY_IDsettings = "idsettings";
 	private static final String KEY_NAME = "name";
+	
 
 	private SQLiteDatabase dbase;
 	public DbHelper(Context context) {
@@ -49,14 +55,15 @@ public class DbHelper extends SQLiteOpenHelper {
 		String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
 				+ KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_SUBJECT + " TEXT, "+ KEY_LEVEL + " TEXT, " +
 				KEY_QUES + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
-				+KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT, "+KEY_OPTD +" TEXT, "+KEY_IMAGE+" TEXT)";
+				+KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT, "+KEY_OPTD +" TEXT, "+KEY_TRIAL1 +" TEXT, "
+				+KEY_TRIAL2 +" TEXT, "+KEY_TRIAL3+" TEXT, "+KEY_TRIAL4 +" TEXT,"+KEY_IMAGE+" TEXT)";
 		db.execSQL(sql);		
 		addQuestions();
 
 		//add table for scores
 		String sql2 = "CREATE TABLE IF NOT EXISTS " + TABLE_SCORES + " ( "
 				+ KEY_IDscores + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TIME + " TEXT, "+ KEY_SUBJECTscores + " TEXT, " +
-				KEY_SCORE + " TEXT)";
+				KEY_SCORE + " TEXT, " +	KEY_LEVELscore +" TEXT)";
 		db.execSQL(sql2);
 
 		//add table for scores
@@ -100,6 +107,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		values.put(KEY_TIME, newscore.getTIME());
 		values.put(KEY_SUBJECTscores, newscore.getSUBJECTscores());
 		values.put(KEY_SCORE, newscore.getSCORE());
+		values.put(KEY_LEVELscore, newscore.getLEVEL());
 		// Inserting Row
 		dbase.insert(TABLE_SCORES, null, values);
 	}
@@ -118,6 +126,7 @@ public class DbHelper extends SQLiteOpenHelper {
 					score.setTIME(cursor.getString(1));
 					score.setSUBJECTscores(cursor.getString(2));
 					score.setSCORE(cursor.getString(3));
+					score.setLEVEL(cursor.getString(4));
 					scoreList.add(score);
 				}
 			} while (cursor.moveToNext());
@@ -139,6 +148,7 @@ public class DbHelper extends SQLiteOpenHelper {
 				score.setTIME(cursor.getString(1));
 				score.setSUBJECTscores(cursor.getString(2));
 				score.setSCORE(cursor.getString(3));
+				score.setLEVEL(cursor.getString(4));
 				scoreList.add(score);
 			} while (cursor.moveToNext());
 		}
@@ -151,22 +161,22 @@ public class DbHelper extends SQLiteOpenHelper {
 		Question q0=new Question("système cardiovasculaire","1","0","0","0","0", "0", "0","none");
 		this.addQuestion(q0);
 		Question q1=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
-				" la partie gauche du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","none");
+				" la partie gauche du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","drawable/circulation2");
 		this.addQuestion(q1);
 		Question q2=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
-				" l'artère pulmonaire?","protoxyde d'azote","oxygène","vapeur d'eau", "gaz carbonique", "gaz carbonique","none");
+				" l'artère pulmonaire?","protoxyde d'azote","oxygène","vapeur d'eau", "gaz carbonique", "gaz carbonique","drawable/circulation2");
 		this.addQuestion(q2);
 		Question q3=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
-				" les veines pulmonaires?","azote","oxygène","argon", "gaz carbonique", "oxygène","none");
+				" les veines pulmonaires?","azote","oxygène","argon", "gaz carbonique", "oxygène","drawable/circulation2");
 		this.addQuestion(q3);
 		Question q4=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
-				" l'aorte?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","none");
+				" l'aorte?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","drawable/circulation2");
 		this.addQuestion(q4);
 		Question q5=new Question("système cardiovasculaire","2","Que se passe-t-il dans les poumons?",
-				"Le gaz carbonique du sang est échangé contre de l'oxygène","L'oxygène du sang est échangé contre du gaz carbonique","La respiration cellulaire 'donne' de l'oxygène au sang et 'prend' du gaz carbonique", "La respiration cellulaire 'donne' du gaz carbonique au sang et 'prend' de l'oxygène", "Le gaz carbonique du sang est échangé contre de l'oxygène","none");
+				"Le gaz carbonique du sang est échangé contre de l'oxygène","L'oxygène du sang est échangé contre du gaz carbonique","La respiration cellulaire 'donne' de l'oxygène au sang et 'prend' du gaz carbonique", "La respiration cellulaire 'donne' du gaz carbonique au sang et 'prend' de l'oxygène", "Le gaz carbonique du sang est échangé contre de l'oxygène","drawable/circulation2");
 		this.addQuestion(q5);
 		Question q6=new Question("système cardiovasculaire","2","Que se passe-t-il dans les muscles?",
-				"Le gaz carbonique du sang est échangé contre de l'oxygène","La photosynthèse 'donne' de l'oxygène au sang et 'prend' du gaz carbonique","La respiration cellulaire 'prend' du gaz carbonique du sang et 'donne' de l'oxygène", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique","none");
+				"Le gaz carbonique du sang est échangé contre de l'oxygène","La photosynthèse 'donne' de l'oxygène au sang et 'prend' du gaz carbonique","La respiration cellulaire 'prend' du gaz carbonique du sang et 'donne' de l'oxygène", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique","drawable/circulation2");
 		this.addQuestion(q6);
 		Question q7=new Question("système cardiovasculaire","1","Que représente le numéro 1 sur cette image?","coeur","poumons","muscle", "intestin grêle", "coeur","drawable/circulation1");
 		this.addQuestion(q7);
@@ -177,7 +187,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		Question q10=new Question("système cardiovasculaire","1","Quel numéro n'est pas alimenté par la grande circulation?","1","2","3","4", "2","drawable/circulation1");
 		this.addQuestion(q10);
 		Question q11=new Question("système cardiovasculaire","1","Quel gaz contient le sang qui circule dans" +
-				" la partie droite du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "gaz carbonique","none");
+				" la partie droite du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "gaz carbonique","drawable/circulation2");
 		this.addQuestion(q11);
 		Question q12=new Question("système cardiovasculaire","1","Quel élément de la respiration cellulaire est symbolisé par la lettre A","oxygène","gaz carbonique","lumière","eau", "oxygène","drawable/respiration_cellulaire");
 		this.addQuestion(q12);
@@ -201,17 +211,17 @@ public class DbHelper extends SQLiteOpenHelper {
 		this.addQuestion(q21);
 		Question q22=new Question("système cardiovasculaire","2","Laquelle de ces affirmations est exacte?","Les veines partent du coeur","Les artères contiennent des valvules","La paroi des veines est plus mince que celle des artères","Les capillaires ne se trouvent que dans les poumons", "La paroi des veines est plus mince que celle des artères","none");
 		this.addQuestion(q22);
-		Question q23=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre B","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la systole ventriculaire","ecg");
+		Question q23=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre B","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la systole ventriculaire","drawable/ecg");
 		this.addQuestion(q23);
-		Question q24=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre A","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la systole auriculaire","ecg");
+		Question q24=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre A","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la systole auriculaire","drawable/ecg");
 		this.addQuestion(q24);
-		Question q25=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		Question q25=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","drawable/ecg");
 		this.addQuestion(q25);
-		Question q26=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		Question q26=new Question("système cardiovasculaire","3","Que représente ce graphique?","La fréquence cardiaque d'un coureur en fonction de sa vitesse","La vitesse d'un coureur en fonction de sa fréquence cardiaque","La fréquence cardiaque d'un coureur en fonction du temps","La vitesse d'un coureur en fonction de la distance", "La fréquence cardiaque d'un coureur en fonction de sa vitesse","drawable/fc");
 		this.addQuestion(q26);
-		Question q27=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		Question q27=new Question("système cardiovasculaire","3","À quelle vitesse le coureur représenté par la courbe rouge atteint-il sa fréquence cardiaque maximale?","11 km/h","8 km/h","10 km/h","20 km/h", "11 km/h","drawable/fc");
 		this.addQuestion(q27);
-		Question q28=new Question("système cardiovasculaire","3","Que représente la zone du graphique désignée par la lettre C","la systole auriculaire","la systole ventriculaire","la diastole auriculaire et ventriculaire","la diastole ventriculaire", "la diastole auriculaire et ventriculaire","ecg");
+		Question q28=new Question("système cardiovasculaire","3","Quelle courbe représente le coureur le mieux entraîné?","La courbe rouge","La courbe bleue","La courbature","La courbe de croissance", "La courbe bleue","drawable/fc");
 		this.addQuestion(q28);
 	}
 	@Override
@@ -233,6 +243,10 @@ public class DbHelper extends SQLiteOpenHelper {
 		values.put(KEY_OPTB, quest.getOPTB());
 		values.put(KEY_OPTC, quest.getOPTC());
 		values.put(KEY_OPTD, quest.getOPTD());
+		values.put(KEY_TRIAL1, "0");
+		values.put(KEY_TRIAL2, "0");
+		values.put(KEY_TRIAL3, "0");
+		values.put(KEY_TRIAL4, "0");
 		values.put(KEY_IMAGE, quest.getIMAGE());
 		// Inserting Row
 		dbase.insert(TABLE_QUEST, null, values);		
@@ -256,7 +270,11 @@ public class DbHelper extends SQLiteOpenHelper {
 				quest.setOPTB(cursor.getString(6));
 				quest.setOPTC(cursor.getString(7));
 				quest.setOPTD(cursor.getString(8));
-				quest.setIMAGE(cursor.getString(9));
+				quest.setTRIAL1(cursor.getString(9));
+				quest.setTRIAL2(cursor.getString(10));
+				quest.setTRIAL3(cursor.getString(11));
+				quest.setTRIAL4(cursor.getString(12));
+				quest.setIMAGE(cursor.getString(13));  //13, because the trials are between OPTD and IMAGE
 				quesList.add(quest);
 			} while (cursor.moveToNext());
 		}
@@ -283,7 +301,11 @@ public class DbHelper extends SQLiteOpenHelper {
 					quest.setOPTB(cursor.getString(6));
 					quest.setOPTC(cursor.getString(7));
 					quest.setOPTD(cursor.getString(8));
-					quest.setIMAGE(cursor.getString(9));
+					quest.setTRIAL1(cursor.getString(9));
+					quest.setTRIAL2(cursor.getString(10));
+					quest.setTRIAL3(cursor.getString(11));
+					quest.setTRIAL4(cursor.getString(12));
+					quest.setIMAGE(cursor.getString(13)); //13, because the trials are between OPTD and IMAGE
 					quesList.add(quest);
 				}
 			} while (cursor.moveToNext());
@@ -311,7 +333,11 @@ public class DbHelper extends SQLiteOpenHelper {
 					quest.setOPTB(cursor.getString(6));
 					quest.setOPTC(cursor.getString(7));
 					quest.setOPTD(cursor.getString(8));
-					quest.setIMAGE(cursor.getString(9));
+					quest.setTRIAL1(cursor.getString(9));
+					quest.setTRIAL2(cursor.getString(10));
+					quest.setTRIAL3(cursor.getString(11));
+					quest.setTRIAL4(cursor.getString(12));
+					quest.setIMAGE(cursor.getString(13)); //13, because the trials are between OPTD and IMAGE
 					quesList.add(quest);
 				}
 			} while (cursor.moveToNext());
@@ -331,6 +357,40 @@ public class DbHelper extends SQLiteOpenHelper {
 		}
 
 		return dbSubjects;
+	}
+	public void incrementTrialNFromQuestion(int trial, Question question) {
+		dbase=this.getReadableDatabase();
+		int questionID = question.getID();
+		ContentValues values = new ContentValues();
+		if (trial == 1) {
+			int trialTotal = Integer.parseInt(question.getTRIAL1());
+			trialTotal++;
+			values.put(KEY_TRIAL1, trialTotal);
+			String[] questionIDArray = new String[1];
+			questionIDArray[0] = Integer.toString(questionID);
+			dbase.update(TABLE_QUEST, values, "id = ?", questionIDArray);
+		} else if (trial == 2) {
+			int trialTotal = Integer.parseInt(question.getTRIAL2());
+			trialTotal++;
+			values.put(KEY_TRIAL2, trialTotal);
+			String[] questionIDArray = new String[1];
+			questionIDArray[0] = Integer.toString(questionID);
+			dbase.update(TABLE_QUEST, values, "id = ?", questionIDArray);
+		} else if (trial == 3) {
+			int trialTotal = Integer.parseInt(question.getTRIAL3());
+			trialTotal++;
+			values.put(KEY_TRIAL3, trialTotal);
+			String[] questionIDArray = new String[1];
+			questionIDArray[0] = Integer.toString(questionID);
+			dbase.update(TABLE_QUEST, values, "id = ?", questionIDArray);
+		} else if (trial == 4) {
+			int trialTotal = Integer.parseInt(question.getTRIAL4());
+			trialTotal++;
+			values.put(KEY_TRIAL4, trialTotal);
+			String[] questionIDArray = new String[1];
+			questionIDArray[0] = Integer.toString(questionID);
+			dbase.update(TABLE_QUEST, values, "id = ?", questionIDArray);
+		}
 	}
 	public int rowcount()
 	{

@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ public class QuizActivity extends Activity {
 	int nbQuestionsLevel1 = 8;
 	int nbQuestionsLevel2 = 6;
 	int nbQuestionsLevel3 = 5;
+	int trialCounter = 1;
 	Question currentQ;
 	TextView txtQuestion;
 	Button answerButton1, answerButton2, answerButton3, answerButton4;
@@ -43,6 +45,7 @@ public class QuizActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_quiz);
 		final DbHelper db = new DbHelper(this);
 		Bundle bun = getIntent().getExtras();
@@ -68,7 +71,6 @@ public class QuizActivity extends Activity {
 				if(isImageFitToScreen) {
 					isImageFitToScreen=false;
 					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
-					//picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 					picture.setAdjustViewBounds(true);
 				}else{
 					isImageFitToScreen=true;
@@ -85,6 +87,9 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton1.getText()))
 				{
+					//write the number of trials in the database
+					db.incrementTrialNFromQuestion(trialCounter, currentQ);
+					
 					if(level == 1 && qid < nbQuestionsLevel1){					
 						score = score + 2;
 						currentQ=quesList1.get(qid);
@@ -117,7 +122,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "1");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -143,7 +148,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "2");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -168,7 +173,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "3");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -182,6 +187,7 @@ public class QuizActivity extends Activity {
 
 					}
 				}else{
+					trialCounter++;
 					answerButton1.setBackgroundResource(R.drawable.button_red);
 					if (level == 1) {
 						score = score - 1;
@@ -199,6 +205,9 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if (currentQ.getANSWER().equals(answerButton2.getText()))
 				{
+					//write the number of trials in the database
+					db.incrementTrialNFromQuestion(trialCounter, currentQ);
+					
 					if(level == 1 && qid < nbQuestionsLevel1){					
 						score = score + 2;
 						currentQ=quesList1.get(qid);
@@ -231,7 +240,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "1");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -257,7 +266,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "2");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -282,7 +291,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "3");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -295,6 +304,7 @@ public class QuizActivity extends Activity {
 						}
 					}
 				} else {
+					trialCounter++;
 					answerButton2.setBackgroundResource(R.drawable.button_red);
 					if (level == 1) {
 						score = score - 1;
@@ -312,6 +322,9 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton3.getText()))
 				{
+					//write the number of trials in the database
+					db.incrementTrialNFromQuestion(trialCounter, currentQ);
+					
 					if(level == 1 && qid < nbQuestionsLevel1){					
 						score = score + 2;
 						currentQ=quesList1.get(qid);
@@ -344,7 +357,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "1");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -370,7 +383,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "2");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -395,7 +408,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "3");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -408,6 +421,7 @@ public class QuizActivity extends Activity {
 						}
 					}
 				} else {
+					trialCounter++;
 					answerButton3.setBackgroundResource(R.drawable.button_red);
 					if (level == 1) {
 						score = score - 1;
@@ -425,6 +439,9 @@ public class QuizActivity extends Activity {
 			public void onClick(View v) {
 				if(currentQ.getANSWER().equals(answerButton4.getText()))
 				{
+					//write the number of trials in the database
+					db.incrementTrialNFromQuestion(trialCounter, currentQ);
+					
 					if(level == 1 && qid < nbQuestionsLevel1){					
 						score = score + 2;
 						currentQ=quesList1.get(qid);
@@ -457,7 +474,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);;
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "1");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -483,7 +500,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);;
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "2");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -508,7 +525,7 @@ public class QuizActivity extends Activity {
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd; HH:mm:ss");
 							String formattedDate = df.format(c.getTime());
 							String scoreString = Integer.toString(score);;
-							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString);
+							Score scoreTOdb = new Score(formattedDate, subjectQuiz, scoreString, "3");
 							db.addScore(scoreTOdb);
 
 							Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
@@ -521,6 +538,7 @@ public class QuizActivity extends Activity {
 						}
 					}
 				} else {
+					trialCounter++;
 					answerButton4.setBackgroundResource(R.drawable.button_red);
 					if (level == 1) {
 						score = score - 1;

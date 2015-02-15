@@ -117,7 +117,7 @@ public class MenuActivity extends Activity {
 		sendButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//if (resultsSent == false) {
+				if (resultsSent == false) {
 					try
 					{
 						File root = new File(Environment.getExternalStorageDirectory(), "SciQuiz");
@@ -126,6 +126,7 @@ public class MenuActivity extends Activity {
 						}
 						File gpxfile = new File(root, "resultats.txt");
 						FileWriter writer = new FileWriter(gpxfile);
+						//write results in file
 						List<Score> scorelist;
 						scorelist = db.getScores();
 						String username = db.getName();
@@ -134,7 +135,15 @@ public class MenuActivity extends Activity {
 						writer.append(username+"   "+android_id+"\n");
 						for (int i = 0; i < scorelist.size(); i++) {
 							Score scoreToWrite = scorelist.get(i);
-							writer.append(scoreToWrite.getSUBJECTscores()+"; "+scoreToWrite.getTIME()+"; "+scoreToWrite.getSCORE()+ "\n");
+							writer.append(scoreToWrite.getSUBJECTscores()+"; "+scoreToWrite.getTIME()+"; "+scoreToWrite.getLEVEL()+"; "+scoreToWrite.getSCORE()+ "\n");
+						}
+						//write question score in file
+						List<Question> questionlist;
+						questionlist = db.getAllQuestions();
+						writer.append("Questions:\n");
+						for (int i = 1; i < questionlist.size(); i++) {
+							Question questionToWrite = questionlist.get(i);
+							writer.append(questionToWrite.getID()+"; "+questionToWrite.getSUBJECT()+"; "+questionToWrite.getLEVEL()+"; "+questionToWrite.getQUESTION()+"; "+questionToWrite.getANSWER()+"; "+questionToWrite.getTRIAL1()+"; "+questionToWrite.getTRIAL2()+"; "+questionToWrite.getTRIAL3()+"; "+questionToWrite.getTRIAL4()+ "\n");
 						}
 						writer.flush();
 						writer.close();
@@ -147,7 +156,7 @@ public class MenuActivity extends Activity {
 					}
 					new SendEmailAsyncTask().execute();
 				}
-			//}
+			}
 		});
 
 		//open change settings activity

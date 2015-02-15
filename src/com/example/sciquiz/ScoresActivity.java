@@ -31,7 +31,6 @@ public class ScoresActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
  
-        DbHelper db = new DbHelper(this);
         backToMenuButton = (Button)findViewById(R.id.button1);
 		//listener for "back to menu" button
 		backToMenuButton.setOnClickListener(new View.OnClickListener() {		
@@ -62,12 +61,12 @@ public class ScoresActivity extends Activity {
         DbHelper db = new DbHelper(this);
  
         // Adding child data
-        listDataHeader.add("sang");
+        //listDataHeader.add("sang");
         listDataHeader.add("système cardiovasculaire");
-        listDataHeader.add("cellule");
+        //listDataHeader.add("cellule");
  
         // Adding child data
-        List<Score> scoresSang;
+        /*List<Score> scoresSang;
         scoresSang = db.getScoresFromSubject("sang");
         List<String> sang = new ArrayList<String>();
         sang.add("Date                     Score");
@@ -84,13 +83,13 @@ public class ScoresActivity extends Activity {
         	String time = scoresSang.get(i).getTIME();
         	String upToNCharacters = time.substring(0, Math.min(time.length(), 10));
         	sang.add(upToNCharacters+"       "+scoresSang.get(i).getSCORE());
-        }
+        }*/
  
      // Adding child data
         List<Score> scoresSysCar;
         scoresSysCar = db.getScoresFromSubject("système cardiovasculaire");
         List<String> sysCar = new ArrayList<String>();
-        sysCar.add("Date                     Score");
+        sysCar.add("Date                     Niveau             Score");
         //sort list according to score
         for (int i = 0; i < scoresSysCar.size() && i < 5; i++) {
         	Score maxscore = scoresSysCar.get(i);
@@ -101,11 +100,13 @@ public class ScoresActivity extends Activity {
         			scoresSysCar.set(i, maxscore);
         		}
         	}
-        	sysCar.add(scoresSysCar.get(i).getTIME()+" score: "+scoresSysCar.get(i).getSCORE());
+        	String time = scoresSysCar.get(i).getTIME();
+        	String upToNCharacters = time.substring(0, Math.min(time.length(), 10));
+        	sysCar.add(upToNCharacters+"       "+scoresSysCar.get(i).getLEVEL()+"                        "+scoresSysCar.get(i).getSCORE());
         }
  
      // Adding child data
-        List<Score> scoresCellule;
+        /*List<Score> scoresCellule;
         scoresCellule = db.getScoresFromSubject("cellule");
         List<String> cellule = new ArrayList<String>();
         cellule.add("Date                     Score");
@@ -120,10 +121,10 @@ public class ScoresActivity extends Activity {
         		}
         	}
         	cellule.add(scoresCellule.get(i).getTIME()+" score: "+scoresCellule.get(i).getSCORE());
-        }
+        }*/
  
-        listDataChild.put(listDataHeader.get(0), sang); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), sysCar);
-        listDataChild.put(listDataHeader.get(2), cellule);
+        //listDataChild.put(listDataHeader.get(0), sang); // Header, Child data
+        listDataChild.put(listDataHeader.get(0), sysCar);
+        //listDataChild.put(listDataHeader.get(2), cellule);
     }
 }
