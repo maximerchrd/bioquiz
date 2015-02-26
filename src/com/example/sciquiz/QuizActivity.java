@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -184,7 +185,7 @@ public class QuizActivity extends Activity {
 					}
 				}else{
 					trialCounter++;
-					answerButton1.setBackgroundResource(R.drawable.button_red);
+					answerButton1.setBackgroundColor(Color.parseColor("#FE1B00"));
 					if (level == 1) {
 						score = score - 1;
 					} else if (level == 2) {
@@ -301,7 +302,7 @@ public class QuizActivity extends Activity {
 					}
 				} else {
 					trialCounter++;
-					answerButton2.setBackgroundResource(R.drawable.button_red);
+					answerButton2.setBackgroundColor(Color.parseColor("#FE1B00"));
 					if (level == 1) {
 						score = score - 1;
 					} else if (level == 2) {
@@ -418,7 +419,7 @@ public class QuizActivity extends Activity {
 					}
 				} else {
 					trialCounter++;
-					answerButton3.setBackgroundResource(R.drawable.button_red);
+					answerButton3.setBackgroundColor(Color.parseColor("#FE1B00"));
 					if (level == 1) {
 						score = score - 1;
 					} else if (level == 2) {
@@ -535,7 +536,7 @@ public class QuizActivity extends Activity {
 					}
 				} else {
 					trialCounter++;
-					answerButton4.setBackgroundResource(R.drawable.button_red);
+					answerButton4.setBackgroundColor(Color.parseColor("#FE1B00"));
 					if (level == 1) {
 						score = score - 1;
 					} else if (level == 2) {
@@ -563,10 +564,22 @@ public class QuizActivity extends Activity {
 	private void setQuestionView()
 	{
 		txtQuestion.setText(currentQ.getQUESTION());
-		answerButton1.setBackgroundResource(R.drawable.button_blue);
-		answerButton2.setBackgroundResource(R.drawable.button_blue);
-		answerButton3.setBackgroundResource(R.drawable.button_blue);
-		answerButton4.setBackgroundResource(R.drawable.button_blue);
+		answerButton1.setBackgroundColor(Color.parseColor("#00CCCB"));
+		answerButton2.setBackgroundColor(Color.parseColor("#00CCCB"));
+		answerButton3.setBackgroundColor(Color.parseColor("#00CCCB"));
+		answerButton4.setBackgroundColor(Color.parseColor("#00CCCB"));
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,      
+				LinearLayout.LayoutParams.WRAP_CONTENT
+		);
+		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+		int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
+		answerButton1.setLayoutParams(params);
+		answerButton2.setLayoutParams(params);
+		answerButton3.setLayoutParams(params);
+		answerButton4.setLayoutParams(params);
+		
 		int imageResource = getResources().getIdentifier(currentQ.getIMAGE(), null, getPackageName());
 		picture.setImageResource(imageResource);
 

@@ -71,7 +71,7 @@ public class DbHelper extends SQLiteOpenHelper {
 				+ KEY_IDsettings + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME +" TEXT)";
 		db.execSQL(sql3);
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, "nom de l'utilisateur");
+		values.put(KEY_NAME, "Anonyme");
 		// Inserting of Replacing Row
 		dbase.insert(TABLE_SETTINGS, null, values);
 		//db.close();
@@ -158,7 +158,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	private void addQuestions()
 	{
-		Question q0=new Question("système cardiovasculaire","1","0","0","0","0", "0", "0","none");
+		Question q0=new Question("système cardiovasculaire/électricité","1","0","0","0","0", "0", "0","none");
 		this.addQuestion(q0);
 		Question q1=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
 				" la partie gauche du coeur?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","drawable/circulation2");
@@ -172,12 +172,12 @@ public class DbHelper extends SQLiteOpenHelper {
 		Question q4=new Question("système cardiovasculaire","2","Quel gaz contient le sang qui circule dans" +
 				" l'aorte?","azote","oxygène","gaz hilarant", "gaz carbonique", "oxygène","drawable/circulation2");
 		this.addQuestion(q4);
-		Question q5=new Question("système cardiovasculaire","2","Que se passe-t-il dans les poumons?",
-				"Le gaz carbonique du sang est échangé contre de l'oxygène","L'oxygène du sang est échangé contre du gaz carbonique","La respiration cellulaire 'donne' de l'oxygène au sang et 'prend' du gaz carbonique", "La respiration cellulaire 'donne' du gaz carbonique au sang et 'prend' de l'oxygène", "Le gaz carbonique du sang est échangé contre de l'oxygène","drawable/circulation2");
-		this.addQuestion(q5);
-		Question q6=new Question("système cardiovasculaire","2","Que se passe-t-il dans les muscles?",
-				"Le gaz carbonique du sang est échangé contre de l'oxygène","La photosynthèse 'donne' de l'oxygène au sang et 'prend' du gaz carbonique","La respiration cellulaire 'prend' du gaz carbonique du sang et 'donne' de l'oxygène", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique","drawable/circulation2");
-		this.addQuestion(q6);
+		//Question q5=new Question("système cardiovasculaire","2","Que se passe-t-il dans les poumons?",
+		//		"Le gaz carbonique du sang est échangé contre de l'oxygène","L'oxygène du sang est échangé contre du gaz carbonique","La respiration cellulaire 'donne' de l'oxygène au sang et 'prend' du gaz carbonique", "La respiration cellulaire 'donne' du gaz carbonique au sang et 'prend' de l'oxygène", "Le gaz carbonique du sang est échangé contre de l'oxygène","drawable/circulation2");
+		//this.addQuestion(q5);
+		//Question q6=new Question("système cardiovasculaire","2","Que se passe-t-il dans les muscles?",
+		//		"Le gaz carbonique du sang est échangé contre de l'oxygène","La photosynthèse 'donne' de l'oxygène au sang et 'prend' du gaz carbonique","La respiration cellulaire 'prend' du gaz carbonique du sang et 'donne' de l'oxygène", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique", "La respiration cellulaire 'prend' de l'oxygène du sang et 'donne' du gaz carbonique","drawable/circulation2");
+		//this.addQuestion(q6);
 		Question q7=new Question("système cardiovasculaire","1","Que représente le numéro 1 sur cette image?","coeur","poumons","muscle", "intestin grêle", "coeur","drawable/circulation1");
 		this.addQuestion(q7);
 		Question q8=new Question("système cardiovasculaire","1","Que représente le numéro 2 sur cette image?","coeur","poumons","muscle", "intestin grêle", "poumons","drawable/circulation1");
@@ -191,7 +191,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		this.addQuestion(q11);
 		Question q12=new Question("système cardiovasculaire","1","Quel élément de la respiration cellulaire est symbolisé par la lettre A","oxygène","gaz carbonique","lumière","eau", "oxygène","drawable/respiration_cellulaire");
 		this.addQuestion(q12);
-		Question q13=new Question("système cardiovasculaire","1","Quel élément de la respiration cellulaire est symbolisé par la lettre B","oxygène","gaz carbonique","lumière","eau", "gaz carbonique","drawable/respiration_cellulaire");
+		/*Question q13=new Question("système cardiovasculaire","1","Quel élément de la respiration cellulaire est symbolisé par la lettre B","oxygène","gaz carbonique","lumière","eau", "gaz carbonique","drawable/respiration_cellulaire");
 		this.addQuestion(q13);
 		Question q14=new Question("système cardiovasculaire","1","Que représente le numéro 1 sur cette image du coeur?","oreillette droite","oreillette gauche","ventricule droit","ventricule gauche", "oreillette droite","drawable/schema_coeur");
 		this.addQuestion(q14);
@@ -223,6 +223,24 @@ public class DbHelper extends SQLiteOpenHelper {
 		this.addQuestion(q27);
 		Question q28=new Question("système cardiovasculaire","3","Quelle courbe représente le coureur le mieux entraîné?","La courbe rouge","La courbe bleue","La courbature","La courbe de croissance", "La courbe bleue","drawable/fc");
 		this.addQuestion(q28);
+		Question q29=new Question("système cardiovasculaire","1","Que représente le numéro 1 sur ce schéma de la circulation sanguine?","Les poumons","La partie droite du coeur","La partie gauche du coeur", "Les autres organes (muscles, cerveau, etc.)","Les poumons","drawable/circul_schema_simple");
+		this.addQuestion(q29);
+		Question q30=new Question("système cardiovasculaire","1","Que représente le numéro 2 sur ce schéma de la circulation sanguine?","Les poumons","La partie droite du coeur","La partie gauche du coeur", "Les autres organes (muscles, cerveau, etc.)","Les autres organes (muscles, cerveau, etc.)","drawable/circul_schema_simple");
+		this.addQuestion(q30);
+		Question q31=new Question("système cardiovasculaire","1","Que représente le numéro 3 sur ce schéma de la circulation sanguine?","Les poumons","La partie droite du coeur","La partie gauche du coeur", "Les autres organes (muscles, cerveau, etc.)","La partie droite du coeur","drawable/circul_schema_simple");
+		this.addQuestion(q31);
+		Question q32=new Question("système cardiovasculaire","1","Que représente le numéro 4 sur ce schéma de la circulation sanguine?","Les poumons","La partie droite du coeur","La partie gauche du coeur", "Les autres organes (muscles, cerveau, etc.)","La partie gauche du coeur","drawable/circul_schema_simple");
+		this.addQuestion(q32);
+		Question q33=new Question("système cardiovasculaire","2","Que représente le numéro 2 sur ce schéma de la circulation sanguine?","Les poumons","La partie droite du coeur","La partie gauche du coeur", "Les autres organes (muscles, cerveau, etc.)","Les poumons","drawable/circul_schema_simple2");
+		this.addQuestion(q33);
+		Question q34=new Question("système cardiovasculaire","2","Que représente le numéro 3 sur ce schéma de la circulation sanguine?","Les poumons","La partie droite du coeur","La partie gauche du coeur", "Les autres organes (muscles, cerveau, etc.)","La partie gauche du coeur","drawable/circul_schema_simple2");
+		this.addQuestion(q34);*/
+		Question q35=new Question("système cardiovasculaire","1","La diastole correspond...","à la contraction des muscles du coeur","au relâchement des muscles du coeur","-", "-","au relâchement des muscles du coeur","drawable/circul_schema_simple2");
+		this.addQuestion(q35);
+		Question q36=new Question("système cardiovasculaire","1","La systole correspond...","à la contraction des muscles du coeur","au relâchement des muscles du coeur","-", "-","à la contraction des muscles du coeur","drawable/circul_schema_simple2");
+		this.addQuestion(q36);
+		Question el1=new Question("électricité","1","Qu'est-ce qui crée le courant électrique?","Le mouvement d'électrons","Le mouvement de protons","Le mouvement d'atomes de métal", "Le mouvement d'atomes d'oxygène","Le mouvement d'électrons","none");
+		this.addQuestion(el1);
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {

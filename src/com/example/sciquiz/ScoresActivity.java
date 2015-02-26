@@ -56,6 +56,7 @@ public class ScoresActivity extends Activity {
         // Adding child data
         //listDataHeader.add("sang");
         listDataHeader.add("système cardiovasculaire");
+        listDataHeader.add("électricité");
         //listDataHeader.add("cellule");
  
         // Adding child data
@@ -96,6 +97,25 @@ public class ScoresActivity extends Activity {
         	String time = scoresSysCar.get(i).getTIME();
         	String upToNCharacters = time.substring(0, Math.min(time.length(), 10));
         	sysCar.add(upToNCharacters+"       "+scoresSysCar.get(i).getLEVEL()+"                        "+scoresSysCar.get(i).getSCORE());
+        }
+     // Adding child data
+        List<Score> scoreélectricité;
+        scoreélectricité = db.getScoresFromSubject("électricité");
+        List<String> élec = new ArrayList<String>();
+        élec.add("Date                     Niveau             Score");
+        //sort list according to score
+        for (int i = 0; i < scoreélectricité.size() && i < 5; i++) {
+        	Score maxscore = scoreélectricité.get(i);
+        	for (int j = i+1; j < scoreélectricité.size(); j++) {
+        		if (Integer.parseInt(scoreélectricité.get(j).getSCORE()) > Integer.parseInt(maxscore.getSCORE())) {
+        			maxscore = scoreélectricité.get(j);
+        			scoreélectricité.set(j, scoreélectricité.get(i));
+        			scoreélectricité.set(i, maxscore);
+        		}
+        	}
+        	String time = scoreélectricité.get(i).getTIME();
+        	String upToNCharacters = time.substring(0, Math.min(time.length(), 10));
+        	élec.add(upToNCharacters+"       "+scoreélectricité.get(i).getLEVEL()+"                        "+scoreélectricité.get(i).getSCORE());
         }
  
      // Adding child data

@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.provider.Settings.Secure;
@@ -30,6 +31,7 @@ import android.view.ViewGroup;
 
 public class MenuActivity extends Activity {
 	Button startButton, scoresButton, sendButton, buttonChangeSettings;
+	TextView consignes;
 	ListView listSubjects;
 	Boolean resultsSent = false;
 
@@ -41,13 +43,27 @@ public class MenuActivity extends Activity {
 		scoresButton = (Button)findViewById(R.id.scoresbutton);
 		sendButton = (Button)findViewById(R.id.sendbutton);
 		buttonChangeSettings = (Button)findViewById(R.id.buttonchangesettings);
+		consignes = (TextView) findViewById(R.id.textViewmenu);
 		listSubjects = (ListView) findViewById(R.id.listView1);
 		final DbHelper db = new DbHelper(this);
 
 		String subjectsRaw = db.getSubjects();
 		final String[] subjects = subjectsRaw.split("/");
+		
+		//set  text for consignes
+		consignes.setText("Bonjour "+db.getName()+".");
 
-
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,      
+				LinearLayout.LayoutParams.WRAP_CONTENT
+		);
+		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+		int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
+		startButton.setLayoutParams(params);
+		scoresButton.setLayoutParams(params);
+		sendButton.setLayoutParams(params);
+		buttonChangeSettings.setLayoutParams(params);
 
 		// Define a new Adapter
 		// First parameter - Context
@@ -65,7 +81,7 @@ public class MenuActivity extends Activity {
 			            TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
 			            /*YOUR CHOICE OF COLOR*/
-			            textView.setTextColor(Color.WHITE);
+			            textView.setTextColor(Color.BLACK);
 
 			            return view;
 			        }
@@ -82,10 +98,10 @@ public class MenuActivity extends Activity {
 				final String subject = (String)parent.getAdapter().getItem(position);
 				// Set the item as checked to be highlighted
 				for (int i = 0; i < listSubjects.getCount(); i++) {
-					listSubjects.getChildAt(i).setBackgroundColor(Color.BLACK);
+					listSubjects.getChildAt(i).setBackgroundColor(Color.WHITE);
 				}
 				//listSubjects.setItemChecked(0, true);
-				view.setBackgroundColor(Color.BLUE);
+				view.setBackgroundColor(Color.parseColor("#79F8F8"));
 				
 				startButton.setOnClickListener(new View.OnClickListener() {		
 					@Override
