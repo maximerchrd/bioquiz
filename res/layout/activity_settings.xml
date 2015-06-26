@@ -10,7 +10,7 @@
            android:layout_height="wrap_content"
            android:text="@string/settings_name"
            android:textAppearance="?android:attr/textAppearanceMedium"
-           android:textColor="@color/white" />
+           android:textColor="@color/black" />
 
        <EditText
            android:id="@+id/edittextnom"
@@ -20,7 +20,7 @@
            android:layout_below="@+id/textViewNom"
            android:ems="10"
            android:inputType="textPersonName"
-           android:textColor="@color/white" >
+           android:textColor="@color/black" >
 
            <requestFocus />
        </EditText>
