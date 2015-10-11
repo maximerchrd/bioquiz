@@ -39,6 +39,10 @@
             android:name="com.sciquizapp.sciquiz.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="com.sciquizapp.sciquiz.AndroidClient"
+            android:label="@string/title_activity_client" >
+        </activity>
     </application>
 
 </manifest>
