@@ -12,6 +12,7 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,7 +30,7 @@ public class AndroidClient extends Activity {
 	EditText textOut;
 	TextView textIn;
 	EditText textIp;
-
+	int questionID = 1;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class AndroidClient extends Activity {
 		public void onClick(View arg0) {
 			new SendAsyncTask().execute();
 		}};
-		
+
 
 		//class for sending mail
 		class SendAsyncTask extends AsyncTask <Void, Void, Boolean> {
@@ -65,11 +66,21 @@ public class AndroidClient extends Activity {
 
 					try {
 						//socket = new Socket(textIp.getText().toString(), 8888);
-						socket = new Socket("192.168.81.1", 8888);
+						//socket = new Socket("10.0.2.2", 8080);
+						socket = new Socket("192.168.43.155", 8080);
 						dataOutputStream = new DataOutputStream(socket.getOutputStream());
 						dataInputStream = new DataInputStream(socket.getInputStream());
 						dataOutputStream.writeUTF(textOut.getText().toString());
-						textIn.setText(dataInputStream.readUTF());
+						Intent intent = new Intent(AndroidClient.this, QuestionActivity.class);
+						String incomingMessage = dataInputStream.readUTF();
+						if (BuildConfig.DEBUG) Log.v("incoming stream", incomingMessage);
+						Bundle b = new Bundle();
+						questionID = Integer.parseInt(incomingMessage);
+						b.putInt("questionID", questionID); //Your score
+						//b.putInt("level", level);
+						intent.putExtras(b);
+						startActivity(intent);
+						//finish();
 					} catch (UnknownHostException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -112,4 +123,5 @@ public class AndroidClient extends Activity {
 				}
 			}
 		}
+
 }
