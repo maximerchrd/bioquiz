@@ -31,6 +31,9 @@ public class AndroidClient extends Activity {
 	TextView textIn;
 	EditText textIp;
 	int questionID = 1;
+	String answerForServer = " ";
+	Bundle bun;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,11 @@ public class AndroidClient extends Activity {
 		Button buttonSend = (Button)findViewById(R.id.send);
 		textIn = (TextView)findViewById(R.id.textin);
 		buttonSend.setOnClickListener(buttonSendOnClickListener);
+
+		bun = getIntent().getExtras();
+		if (bun != null) {
+			new SendAsyncTask().execute();
+		}
 	}
 
 	Button.OnClickListener buttonSendOnClickListener
@@ -67,20 +75,28 @@ public class AndroidClient extends Activity {
 					try {
 						//socket = new Socket(textIp.getText().toString(), 8888);
 						//socket = new Socket("10.0.2.2", 8080);
-						socket = new Socket("192.168.43.155", 8080);
-						dataOutputStream = new DataOutputStream(socket.getOutputStream());
-						dataInputStream = new DataInputStream(socket.getInputStream());
-						dataOutputStream.writeUTF(textOut.getText().toString());
-						Intent intent = new Intent(AndroidClient.this, QuestionActivity.class);
-						String incomingMessage = dataInputStream.readUTF();
-						if (BuildConfig.DEBUG) Log.v("incoming stream", incomingMessage);
-						Bundle b = new Bundle();
-						questionID = Integer.parseInt(incomingMessage);
-						b.putInt("questionID", questionID); //Your score
-						//b.putInt("level", level);
-						intent.putExtras(b);
-						startActivity(intent);
-						//finish();
+						if (bun == null) {
+							socket = new Socket("192.168.43.155", 8080);
+							dataOutputStream = new DataOutputStream(socket.getOutputStream());
+							dataInputStream = new DataInputStream(socket.getInputStream());
+							dataOutputStream.writeUTF(textOut.getText().toString());
+							Intent intent = new Intent(AndroidClient.this, QuestionActivity.class);
+							String incomingMessage = dataInputStream.readUTF();
+							if (BuildConfig.DEBUG) Log.v("incoming stream", incomingMessage);
+							Bundle b = new Bundle();
+							questionID = Integer.parseInt(incomingMessage);
+							b.putInt("questionID", questionID); //Your score
+							//b.putInt("level", level);
+							intent.putExtras(b);
+							startActivity(intent);
+							finish();
+						} else {
+							socket = new Socket("192.168.43.155", 8080);
+							dataOutputStream = new DataOutputStream(socket.getOutputStream());
+							dataInputStream = new DataInputStream(socket.getInputStream());
+							dataOutputStream.writeUTF(bun.getString("answer"));
+							bun = null;
+						}
 					} catch (UnknownHostException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

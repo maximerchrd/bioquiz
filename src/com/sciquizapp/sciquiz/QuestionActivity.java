@@ -80,28 +80,52 @@ public class QuestionActivity extends Activity {
 		answerButton1.setOnClickListener(new View.OnClickListener() {		
 			@SuppressLint("SimpleDateFormat") @Override
 			public void onClick(View v) {
-				
+				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
+				Bundle b = new Bundle();
+				//questionID = Integer.parseInt(incomingMessage);
+				b.putString("answer", String.valueOf(answerButton1.getText()));
+				intent.putExtras(b);
+				startActivity(intent);
+				finish();
 				invalidateOptionsMenu();
 			}
 		});
 		answerButton2.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				
+				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
+				Bundle b = new Bundle();
+				//questionID = Integer.parseInt(incomingMessage);
+				b.putString("answer", String.valueOf(answerButton2.getText()));
+				intent.putExtras(b);
+				startActivity(intent);
+				finish();
 				invalidateOptionsMenu();
 			}
 		});
 		answerButton3.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				
+				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
+				Bundle b = new Bundle();
+				//questionID = Integer.parseInt(incomingMessage);
+				b.putString("answer", String.valueOf(answerButton3.getText()));
+				intent.putExtras(b);
+				startActivity(intent);
+				finish();
 				invalidateOptionsMenu();
 			}
 		});
 		answerButton4.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				
+				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
+				Bundle b = new Bundle();
+				//questionID = Integer.parseInt(incomingMessage);
+				b.putString("answer", String.valueOf(answerButton4.getText()));
+				intent.putExtras(b);
+				startActivity(intent);
+				finish();
 				invalidateOptionsMenu();
 			}
 		});
